@@ -1,0 +1,16 @@
+void freedrawing(int x, int y, int headinglength, int width, int hieght, int middle, char ch);
+void printline();
+void printsquare();
+void printtriangle();
+void printtextbox();
+void printtrapezium();
+void printparralelogram();
+void printdiamond();
+void printcircle();
+void printheart();
+void printpentagon();
+void printhexagon();
+void printstar();
+void printkite();
+void printalphabets();
+void printnumbers();
