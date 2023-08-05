@@ -8,7 +8,7 @@ void opendirectory(char str[])
 {
     DIR *directory;
     struct dirent *entry;
-    directory = opendir("str");
+    directory = opendir(str);
     if (directory == NULL)
     {
         printf("Eroor occured");
@@ -18,17 +18,21 @@ void opendirectory(char str[])
         printf("%s\n", entry->d_name);
     }
 }
-void savefiledefault(){
+void savefiledefault()
+{
 
     fptr = fopen("default.txt", "w");
 }
 
 void savefile(char path[], FILE *fptr)
 {
-    char ch;
-    strcat(path, ".txt");
-    char choice;
+    fclose(fptr);
     FILE *fptr2;
+    char ch;
+    char choice;
+
+    strcat(path, ".txt");
+
     if (access(path, F_OK) == 0)
     {
         printf("File '%s' already exists.\n", path);
@@ -38,27 +42,65 @@ void savefile(char path[], FILE *fptr)
         {
             fptr = fopen("default.txt", "r");
             fptr2 = fopen(path, "w");
-            if (fptr2 == NULL)
+            if (fptr == NULL || fptr2 == NULL)
             {
-                printf("Eroor in creating file");
+                printf("Error in opening/creating files\n");
+                return;
             }
 
-       while ((ch = fgetc(fptr)) != EOF)
+            while ((ch = fgetc(fptr)) != EOF)
             {
                 fputc(ch, fptr2);
             }
-            printf("Your file has been created\n Press m button to go back to main menu");
+            printf("Your file has been created.\nPress 'm' to go back to the main menu.\n");
+            fclose(fptr);
             fclose(fptr2);
         }
-        else
+    }
+    else
+    {
+        fptr = fopen("default.txt", "r");
+        fptr2 = fopen(path, "w");
+        if (fptr == NULL || fptr2 == NULL)
         {
-            Options();
+            printf("Error in opening/creating files\n");
+            return;
         }
 
-        ch = getch();
-        if (ch == 'm')
+        while ((ch = fgetc(fptr)) != EOF)
         {
-            Options();
+            fputc(ch, fptr2);
         }
+        printf("Your file has been created.\nPress 'm' to go back to the main menu.\n");
+        fclose(fptr);
+        fclose(fptr2);
+        getch();
+        char ch;
+        while (ch=='m')
+        {
+            printf("Press 'm' to go back to the main menu.");
+        }
+        system("cls");
+        Options();
+        
     }
+}
+void openfile(char path[], FILE *fptr)
+{
+    FILE *fptr2;
+    char ch;
+    char choice;
+    strcat(path, ".txt");
+
+        fptr2 = fopen(path, "r");
+        if (fptr2 == NULL)
+        {
+            printf("Error in opening\n");
+            return;
+        }
+        while ((ch = fgetc(fptr2)) != EOF)
+        {
+            printf("%c",ch);
+        }
+
 }

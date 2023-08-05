@@ -1,4 +1,4 @@
-#include <stdio.h>
+
 #include <math.h>
 #include "../interface/interface_header.h"
 void square(int size, char ch, int fill, int x, int y)

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
-#include<unistd.h>
+#include <unistd.h>
 #include "..\interface\interface_header.h"
 FILE *fptr;
 void getConsoleSize(int *width, int *height)
@@ -26,14 +26,14 @@ void printHeading(int x, int y, char string[])
     gotoxy(x, y);
     puts(string);
 }
-void free_draw_instruction(int x, int y, int headinglength, int width, int hieght, int middle, char ch){
-
+void free_draw_instruction(int x, int y, int headinglength, int width, int hieght, int middle, char ch)
+{
 
     getConsoleSize(&width, &hieght);
     x = 0;
     y = 0;
     printStarLine(width, x, y);
-        y++;
+    y++;
     char string[] = "Intructions";
     headinglength = strlen(string);
     middle = (width - headinglength) / 2;
@@ -52,17 +52,15 @@ void free_draw_instruction(int x, int y, int headinglength, int width, int hiegh
     printf("\n");
     printf("Now press s start to start drwaing\n");
     printf("Press M to go to main menu\n");
-    ch=getch();
-    if (ch=='s')
+    ch = getch();
+    if (ch == 's')
     {
         free_drawing(x, y, headinglength, middle, width, middle, ch);
     }
-    else if (ch=='m')
+    else if (ch == 'm')
     {
-    Options();
+        Options();
     }
-    
-    
 }
 void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middle, char ch)
 {
@@ -97,96 +95,95 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
     printf("-> Press Enter to go to next line\n");
     printf("->Press backspace to return to main menu\n");
     printf("-> Press q to quit\n");
-    y=21;
+    y = 21;
     printStarLine(width, x, y);
-y++;
-        char string2[] = "Start Drawing from here";
+    y++;
+    char string2[] = "Start Drawing from here";
     headinglength = strlen(string2);
     middle = (width - headinglength) / 2;
     printHeading(middle, y, string2);
     while (1)
-    {    
-    ch = getch();
-    if (ch == 'a')
     {
-        printline();
-    }
-    else if (ch == 'b')
-    {
-        printsquare();
-    }
-    else if (ch == 'c')
-    {
-        printtextbox();
-    }
+        ch = getch();
+        if (ch == 'a')
+        {
+            printline();
+        }
+        else if (ch == 'b')
+        {
+            printsquare();
+        }
+        else if (ch == 'c')
+        {
+            printtextbox();
+        }
 
-    else if (ch == 'd')
-    {
-        printtriangle();
-    }
-    else if (ch == 'e')
-    {
-        printtrapezium();
-    }
-    else if (ch == 'f')
-    {
-        printparralelogram();
-    }
-    else if (ch == 'g')
-    {
-        printdiamond();
-    }
-    else if (ch == 'h')
-    {
-        printcircle();
-    }
-    else if (ch == 'i')
-    {
-        printheart();
-    }
-    else if (ch == 'j')
-    {
-        printpentagon();
-    }
-    else if (ch == 'k')
-    {
-        printhexagon();
-    }
-    else if (ch == 'l')
-    {
-        printstar();
-    }
-    else if (ch == 'm')
-    {
-        printkite();
-    }
-    else if (ch == 'o')
-    {
-        printalphabets();
-    }
-    else if (ch == 'p')
-    {
-        printnumbers();
-    }
-    else if (ch == 'q')
-    {
-        system("cls");
-        gotoxy(48, 15);
-        printf("********Good Bye********");
-        Sleep(15);
-        exit(1);
-
-    }
-    else if (ch == 8)
-    {
-        whitecolour();
-        system("cls");
-        Options();
-    }
+        else if (ch == 'd')
+        {
+            printtriangle();
+        }
+        else if (ch == 'e')
+        {
+            printtrapezium();
+        }
+        else if (ch == 'f')
+        {
+            printparralelogram();
+        }
+        else if (ch == 'g')
+        {
+            printdiamond();
+        }
+        else if (ch == 'h')
+        {
+            printcircle();
+        }
+        else if (ch == 'i')
+        {
+            printheart();
+        }
+        else if (ch == 'j')
+        {
+            printpentagon();
+        }
+        else if (ch == 'k')
+        {
+            printhexagon();
+        }
+        else if (ch == 'l')
+        {
+            printstar();
+        }
+        else if (ch == 'm')
+        {
+            printkite();
+        }
+        else if (ch == 'o')
+        {
+            printalphabets();
+        }
+        else if (ch == 'p')
+        {
+            printnumbers();
+        }
+        else if (ch == 'q')
+        {
+            system("cls");
+            gotoxy(48, 15);
+            printf("********Good Bye********");
+            sleep(8);
+            exit(1);
+        }
+        else if (ch == 8)
+        {
+            whitecolour();
+            system("cls");
+            Options();
+        }
         else if (ch == 13)
-    {
-        nextline();
-    }
+        {
+            nextline();
+        }
     }
 }
 void Options()
@@ -226,14 +223,22 @@ void Options()
         system("cls");
         free_draw_instruction(x, y, headinglength, middle, width, middle, ch);
     }
-    else if (ch== 'q' || ch== 'Q')
+    else if (ch == 51)
     {
-                system("cls");
+        savefilemenu();
+    }
+    else if (ch == 52)
+    {
+        viewfile();
+    }
+    else if (ch == 'q' || ch == 'Q')
+    {
+        system("cls");
         gotoxy(48, 15);
         printf("********Good Bye********");
-        Sleep(40);
+        sleep(8);
+        exit(1);
     }
-    
 }
 void MainPage(int x, int y, int headinglength, int width, int hieght, int middle)
 {
