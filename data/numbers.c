@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include<math.h>
-void print0(char ch){
+void print0(char ch, int x, int y){
     int radius=5;
     int diameter = radius * 2; 
      int i, j; 
@@ -16,9 +16,11 @@ void print0(char ch){
          } 
   
          printf("\n");
+                 y++;
+        gotoxy(x,y);
 }
 }
-void print1(char ch)
+void print1(char ch, int x, int y)
 
 {
 
@@ -38,9 +40,11 @@ void print1(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void print2(char ch){
+void print2(char ch, int x, int y){
     int i, j;
     int size = 9; // You can adjust the size as per your preference
 
@@ -53,9 +57,11 @@ void print2(char ch){
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
 }
 }
-void print3(char ch){
+void print3(char ch, int x, int y){
     int rows=9;
     for(int i=1;i<=rows;i++)
     {
@@ -71,9 +77,11 @@ void print3(char ch){
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
 }
 }
-void print4(char ch){
+void print4(char ch, int x, int y){
     int size = 9;
     for (int i = 0; i < size; i++)
     {
@@ -89,9 +97,11 @@ void print4(char ch){
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
 }
 }
-void print5(char ch){
+void print5(char ch, int x, int y){
 int i, j;
     int height=9;
     for (i = 0; i < height; i++) {
@@ -109,9 +119,11 @@ int i, j;
               printf(" ");
         }
     printf("\n");
+            y++;
+        gotoxy(x,y);
 }    
 }
-void print6(char ch){
+void print6(char ch, int x, int y){
     int i, j;
     int height = 9;
     for (i = 0; i < height; i++)
@@ -124,9 +136,11 @@ void print6(char ch){
                 printf(" ");
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
 }
 }
-void print7(char ch){
+void print7(char ch, int x, int y){
        int i, j;
     int height = 9;
     for (i = 0; i < height; i++)
@@ -139,10 +153,12 @@ void print7(char ch){
                 printf(" ");
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 
 }
-void print8(char ch){
+void print8(char ch, int x, int y){
 
     int rows=9;
     for(int i=1;i<=rows;i++)
@@ -159,9 +175,11 @@ void print8(char ch){
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
 }
 }
-void print9(char ch){
+void print9(char ch, int x, int y){
      int size = 9;
     for (int i = 0; i < size; i++)
     {
@@ -177,18 +195,24 @@ void print9(char ch){
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 
 }
-void numbers(int start,int end,char ch)
+void numbers(int start,int end,char ch, int x, int y)
 {
-    void (*printFunctions[])(char) = {print0, print1, print2, print3, print4, print5, print6, print7, print8, print9};
+    void (*printFunctions[])(char,int,int) = {print0, print1, print2, print3, print4, print5, print6, print7, print8, print9};
 
     for (int i = start; i <= end; i++)
     {
-        printf("Printing %d:\n",  i); // Print the current character being processed
-        printFunctions[i](ch);             // Call the corresponding print function
-        printf("\n");                      // Print a new line after each character is printed
+          gotoxy(x,y);     
+        printf("Printing %d:\n",  i);
+        y=y+2;
+        gotoxy(x,y);                              // Print the current character being processed
+        printFunctions[i](ch,x,y);             // Call the corresponding print function
+        printf("\n");
+        y=y+11;
+                         // Print a new line after each character is printed
     }
-  
 }

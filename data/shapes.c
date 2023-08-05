@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include "../interface/interface_header.h"
-void square(int size, char ch, int fill)
+void square(int size, char ch, int fill, int x, int y)
 {
     if (fill == 1)
     {
@@ -14,6 +14,8 @@ void square(int size, char ch, int fill)
             }
             printf("\n");
             fprintf(fptr, "\n");
+            y++;
+            gotoxy(x, y);
         }
     }
     else if (fill == 0)
@@ -35,10 +37,12 @@ void square(int size, char ch, int fill)
             }
             printf("\n");
             fprintf(fptr, "\n");
+            y++;
+            gotoxy(x, y);
         }
     }
 }
-void triangles(int type, int rows, int fill, char shape, char ch, char side)
+void triangles(int type, int rows, int fill, char shape, char ch, char side, int x, int y)
 {
 
     if (type == 1)
@@ -156,6 +160,8 @@ void triangles(int type, int rows, int fill, char shape, char ch, char side)
             printf("\n");
             fprintf(fptr, "\n");
             num--;
+            y++;
+            gotoxy(x, y);
         }
     }
     else if (type == 2)
@@ -180,6 +186,8 @@ void triangles(int type, int rows, int fill, char shape, char ch, char side)
                     }
                     printf("\n");
                     fprintf(fptr, "\n");
+                     y++;
+            gotoxy(x, y);
                 }
             }
             else if (fill == 0)
@@ -207,6 +215,8 @@ void triangles(int type, int rows, int fill, char shape, char ch, char side)
                     }
                     printf("\n");
                     fprintf(fptr, "\n");
+                     y++;
+            gotoxy(x, y);
                 }
             }
         }
@@ -229,6 +239,8 @@ void triangles(int type, int rows, int fill, char shape, char ch, char side)
                     }
                     printf("\n");
                     fprintf(fptr, "\n");
+                     y++;
+            gotoxy(x, y);
                 }
             }
             else if (fill == 0)
@@ -256,12 +268,14 @@ void triangles(int type, int rows, int fill, char shape, char ch, char side)
                     }
                     printf("\n");
                     fprintf(fptr, "\n");
+                     y++;
+            gotoxy(x, y);
                 }
             }
         }
     }
 }
-void parralelogram(int width, int hieght, int fill, char ch)
+void parralelogram(int width, int hieght, int fill, char ch, int x, int y)
 {
     if (fill == 1)
     {
@@ -279,6 +293,8 @@ void parralelogram(int width, int hieght, int fill, char ch)
             }
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
     }
     else if (fill == 0)
@@ -305,10 +321,12 @@ void parralelogram(int width, int hieght, int fill, char ch)
             }
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
     }
 }
-void trapezium(int base1, int base2, int fill, char ch)
+void trapezium(int base1, int base2, int fill, char ch, int x, int y)
 {
 
     if (fill == 1)
@@ -316,6 +334,7 @@ void trapezium(int base1, int base2, int fill, char ch)
 
         for (int i = 0; i < ((base2 - base1) / 2) + 1; i++)
         {
+
             for (int j = 1; j <= base2; j++)
             {
                 if (j > ((base2 - base1) / 2) - i && j <= base1 + ((base2 - base1) / 2) + i)
@@ -332,6 +351,8 @@ void trapezium(int base1, int base2, int fill, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+            y++;
+            gotoxy(x, y);
         }
     }
     else if (fill == 0)
@@ -339,6 +360,7 @@ void trapezium(int base1, int base2, int fill, char ch)
 
         for (int i = 0; i < ((base2 - base1) / 2) + 1; i++)
         {
+            gotoxy(x, y);
             for (int j = 1; j <= base2; j++)
             {
                 if ((i == 0 && ((j > ((base2 - base1) / 2)) && j <= base1 + ((base2 - base1) / 2))) || i == ((base2 - base1) / 2) || j == (((base2 - base1) / 2) - i) + 1 || j == base1 + ((base2 - base1) / 2) + i)
@@ -355,10 +377,12 @@ void trapezium(int base1, int base2, int fill, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
     }
 }
-void heart(int size, char ch)
+void heart(int size, char ch, int x, int y)
 {
 
     int i, j;
@@ -392,6 +416,8 @@ void heart(int size, char ch)
         // New row
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
 
     // Printing inverted star pyramid
@@ -410,9 +436,11 @@ void heart(int size, char ch)
         // New row
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
 }
-void line(char ch, int size, FILE *fptr)
+void line(char ch, int size, int x, int y)
 {
     for (int i = 0; i < size; i++)
     {
@@ -420,7 +448,7 @@ void line(char ch, int size, FILE *fptr)
         fprintf(fptr, "%c", ch);
     }
 }
-void circle(int size, int fill, char ch)
+void circle(int size, int fill, char ch, int x, int y)
 {
 
     // here size will be the radius
@@ -446,6 +474,8 @@ void circle(int size, int fill, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
     }
     else if (fill == 0)
@@ -468,10 +498,12 @@ void circle(int size, int fill, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
     }
 }
-void diamond(int size, int fill, char ch)
+void diamond(int size, int fill, char ch, int x, int y)
 {
 
     if (fill == 1)
@@ -495,6 +527,8 @@ void diamond(int size, int fill, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
         // Now for the lower part of diamond
         for (int i = 0; i < size; i++)
@@ -513,6 +547,8 @@ void diamond(int size, int fill, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
     }
     else if (fill == 0)
@@ -536,10 +572,12 @@ void diamond(int size, int fill, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
     }
 }
-void textbox(int width, int hieght)
+void textbox(int width, int hieght, int x, int y)
 {
 
     printf("Enter the hieght: ");
@@ -567,9 +605,11 @@ void textbox(int width, int hieght)
         }
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
 }
-void pentagon(int size, char ch)
+void pentagon(int size, char ch, int x, int y)
 {
 
     for (int i = 1; i <= size; i++)
@@ -605,6 +645,8 @@ void pentagon(int size, char ch)
 
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
     for (int i = 1; i <= size; i++)
     {
@@ -622,9 +664,11 @@ void pentagon(int size, char ch)
         }
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
 }
-void hexagon(int size, char ch)
+void hexagon(int size, char ch, int x, int y)
 {
 
     for (int i = 1; i <= size; i++)
@@ -660,6 +704,8 @@ void hexagon(int size, char ch)
 
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
     for (int i = 1; i <= size; i++)
     {
@@ -677,6 +723,8 @@ void hexagon(int size, char ch)
         }
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
     for (int i = 1; i <= size; i++)
     {
@@ -711,9 +759,11 @@ void hexagon(int size, char ch)
 
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
 }
-void star(int rows, int type, char ch)
+void star(int rows, int type, char ch, int x, int y)
 {
     if (type == 1)
     {
@@ -738,6 +788,8 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
         for (int i = 0; i < rows / 2; i++)
         {
@@ -764,6 +816,8 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
         for (int i = 0; i < rows * 3; i++)
         {
@@ -771,6 +825,8 @@ void star(int rows, int type, char ch)
             fprintf(fptr, " %c", ch);
         }
         printf("\n");
+         y++;
+            gotoxy(x, y);
         for (int i = 0; i < rows / 2; i++)
         {
             for (int j = 0; j < i * 2 + 1; j++)
@@ -801,6 +857,8 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
         for (int i = 0; i < rows - 1; i++)
         {
@@ -822,6 +880,8 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
     }
     else if (type == 2)
@@ -850,6 +910,8 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
         for (int i = 0; i < rows / 2; i++)
         {
@@ -876,6 +938,8 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
         for (int i = 0; i < rows * 3; i++)
         {
@@ -884,6 +948,8 @@ void star(int rows, int type, char ch)
         }
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
         for (int i = 0; i < rows / 2 - 1; i++)
         {
             for (int j = 0; j < i * 2 + 1; j++)
@@ -914,6 +980,8 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
         for (int i = 0; i < rows / 2; i++)
         {
@@ -940,6 +1008,8 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
         for (int i = 0; i < rows * 3; i++)
         {
@@ -947,6 +1017,8 @@ void star(int rows, int type, char ch)
             fprintf(fptr, " %c", ch);
         }
         printf("\n");
+         y++;
+            gotoxy(x, y);
         fprintf(fptr, "\n");
         for (int i = 0; i < rows / 2; i++)
         {
@@ -978,6 +1050,8 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
         for (int i = 0; i < rows - 1; i++)
         {
@@ -999,10 +1073,12 @@ void star(int rows, int type, char ch)
 
             printf("\n");
             fprintf(fptr, "\n");
+             y++;
+            gotoxy(x, y);
         }
     }
 }
-void kite(int rows, char ch)
+void kite(int rows, char ch, int x, int y)
 {
 
     // for printint the upper part of diamond of kite
@@ -1032,6 +1108,8 @@ void kite(int rows, char ch)
 
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
     // Now for the lower part of diamond
     for (int i = 0; i < rows; i++)
@@ -1057,6 +1135,8 @@ void kite(int rows, char ch)
 
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
     // for the tail pf kite
     for (int i = 0; i < 3; i++)
@@ -1082,6 +1162,8 @@ void kite(int rows, char ch)
 
         printf("\n");
         fprintf(fptr, "\n");
+         y++;
+            gotoxy(x, y);
     }
 }
 void nextline()

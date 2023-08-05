@@ -231,8 +231,7 @@ void Options()
                 system("cls");
         gotoxy(48, 15);
         printf("********Good Bye********");
-        Sleep(15);
-        exit(1);
+        Sleep(40);
     }
     
 }

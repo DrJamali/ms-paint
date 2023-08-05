@@ -72,7 +72,6 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
             gotoxy(x, y);
             printf("*");
             fprintf(fptr, "*");
-
         }
         else if (ch == 8)
         {
@@ -106,46 +105,75 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
 }
 void printline()
 {
+    int x = 0;
+    int y = 26;
     int size;
     char ch;
     char colour;
     printf("Enter the Size: ");
+    y++;
     scanf("%d", &size);
     printf("Enter any character to print: ");
+    y++;
     scanf(" %c", &ch);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    y++;
     scanf(" %c", &colour);
+    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                 : (colour == 'w')   ? whitecolour()
                                                     : printf("you are not entering a valid colour");
-    line(ch, size, fptr);
+
+    line(ch, size,x,y);
 }
 void printsquare()
 {
+        int x = 0;
+    int y = 26;
     int size;
     char ch;
     char colour;
-    printf("Enter the size: ");
+    printf("Enter the size: ");y++;
     scanf("%d", &size);
+    y++;
     printf("Enter any character to print: ");
     scanf(" %c", &ch);
+    y++;
     int fill;
     printf("1 to fill the shape 0 t emplty: ");
+    y++;
     scanf("%d", &fill);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+    y=y+6;
+    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    square(size, ch, fill);
-    ch = getch();
+    square(size, ch, fill,x,y);
 }
 void printtriangle()
 
 {
+        int x = 0;
+    int y = 26;
     int type;
     char shape;
     int rows;
@@ -154,51 +182,84 @@ void printtriangle()
     char side;
     char colour;
     printf("Enter 1 for right angle triangles and 2 for complete triangle : ");
+    y++;
     scanf("%d", &type);
 
     printf("Enter the number of rows: ");
     scanf("%d", &rows);
-
+y++;
     printf("Enter the shape U for Upward D for downward: ");
+    y++;
     scanf(" %c", &shape);
+     if (type == 1)
+    {
+
+        printf("Enter the l for left r for right sided: ");
+        y++;
+        scanf(" %c", &side);
+    }
     printf("Enter any character to print: ");
+    y++;
     scanf(" %c", &ch);
+    y++;
     printf("1 to fill the shape 0 to empty: ");
+    y++;
     scanf("%d", &fill);
+
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    y=y+6;
     scanf(" %c", &colour);
+    
+    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    if (type == 1)
-    {
 
-        printf("Enter the l for left r for right sided: ");
-        scanf(" %c", &side);
-    }
-    triangles(type, rows, fill, shape, ch, side);
-    ch = getch();
+    triangles(type, rows, fill, shape, ch, side,x,y);
 }
 void printtextbox()
 {
+        int x = 0;
+    int y = 26;
     int width;
     int hieght;
     char colour;
     printf("Enter the hieght: ");
+    y++;
     scanf("%d", &hieght);
     printf("Enter the width: ");
+    y++;
     scanf("%d", &width);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    y++;
     scanf(" %c", &colour);
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
+
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    textbox(width, hieght);
+    textbox(width, hieght,x,y);
 }
 void printtrapezium()
 {
+        int x = 0;
+    int y = 26;
     int base1;
     int base2;
     int fill;
@@ -206,229 +267,377 @@ void printtrapezium()
     char colour;
     printf("Enter the size of upper base: ");
     scanf("%d", &base1);
-
+y++;
     printf("Enter the size of lower base: ");
     scanf("%d", &base2);
+    y++;
+        if (base1 > base2)
+    {
+        printf("uppwe base should be less than the lower base\n Try Again");
+        y++;
+        printtrapezium();
+    }
     printf("Enter any character to print: ");
     scanf(" %c", &ch);
+y++;
 
     printf("1 to fill the shape 0 to empty: ");
     scanf("%d", &fill);
+    y++;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+    y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    if (base1 > base2)
-    {
-        printf("uppwe base should be less than the lower base\n Try Again");
-        printtrapezium();
-    }
-    else
-    {
-        trapezium(base1, base2, fill, ch);
-    }
-    ch = getch();
+
+
+        trapezium(base1, base2, fill, ch,x,y);
+    
 }
 void printparralelogram()
 {
-
+    int x = 0;
+    int y = 26;
     int hieght;
     int width;
     char ch;
     char colour;
     int fill;
     printf("Enter the hieght: ");
+    y++;
     scanf("%d", &hieght);
     printf("Enter width: ");
+    y++;
     scanf("%d", &width);
     printf("Enter any character to print: ");
+    y++;
     scanf(" %c", &ch);
 
     printf("1 to fill the shape 0 to empty: ");
+    y++;
     scanf("%d", &fill);
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+    y=y+6;
+        char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    parralelogram(hieght, width, fill, ch);
+    parralelogram(hieght, width, fill, ch,x,y);
 }
 void printdiamond()
 {
+        int x = 0;
+    int y = 26;
     int size;
     char ch;
     printf("Enter the rows: ");
+    y++;
     scanf("%d", &size);
     printf("Enter any character to print: ");
+    y++;
     scanf(" %c", &ch);
     int fill;
     printf("Press 1 to make complete 0 to make half diamond: ");
+    y++;
     scanf("%d", &fill);
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+    y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    diamond(size, fill, ch);
+    diamond(size, fill, ch,x,y);
 }
 void printcircle()
 {
+        int x = 0;
+    int y = 26;
     int size;
     char ch;
 
     printf("Enter the Radius: ");
+    y++;
     scanf("%d", &size);
     printf("Enter any character to print: ");
+    y++;
     scanf(" %c", &ch);
     int fill;
     printf("Press 1 to make complete 0 to make half filled circle: ");
+    y++;
     scanf("%d", &fill);
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+    y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
 
-    circle(size, fill, ch);
+    circle(size, fill, ch,x,y);
 }
 void printheart()
 {
-
+    int x = 0;
+    int y = 26;
     int size;
     char ch;
 
     printf("Enter the Size: ");
+    y++;
     scanf("%d", &size);
     printf("Enter any character to print: ");
     scanf(" %c", &ch);
+    y++;
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+     y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    heart(size, ch);
+    heart(size, ch,x,y);
 }
 void printpentagon()
 {
+        int x = 0;
+    int y = 26;
     char ch;
     int size;
 
     printf("Enter size: ");
+    y++;
     scanf("%d", &size);
     printf("Enter any character to print: ");
+    y++;
     scanf(" %c", &ch);
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+     y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    pentagon(size, ch);
+    pentagon(size, ch,x,y);
 }
 void printhexagon()
 {
+        int x = 0;
+    int y = 26;
     int size;
     char ch;
     printf("Enter size: ");
+    y++;
     scanf("%d", &size);
     printf("Enter any character to print: ");
+    y++;
     scanf(" %c", &ch);
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    y++;
     scanf(" %c", &colour);
+     y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    hexagon(size, ch);
+    hexagon(size, ch,x,y);
 }
 void printstar()
 {
+        int x = 0;
+    int y = 26;
     int size;
     char ch;
     int type;
     printf("Enter size:");
+    y++;
     scanf("%d", &size);
     printf("Enter any character to print: ");
+    y++;
     scanf(" %c", &ch);
     printf("Enter the size of star(Enter the odd number for more symmetrical shape): ");
+    y++;
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+     y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    star(size, type, ch);
+    star(size, type, ch,x,y);
 }
 void printkite()
 {
+        int x = 0;
+    int y = 26;
     int size;
     char ch;
     printf("Enter the rows: ");
+    y++;
     scanf("%d", &size);
     printf("Enter any character to print: ");
+    y++;
     scanf(" %c", &ch);
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+         y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
-    kite(size, ch);
+    kite(size, ch,x,y);
 }
 void printalphabets()
 {
-
+    int x = 0;
+    int y = 26;
     printf("Enter the starting Alphabet(Uppercase Letter): ");
+    y++;
     char start;
     scanf(" %c", &start);
     printf("Enter the ending Alphabet(Uppercase Letter): ");
+    y++;
     char end;
     scanf(" %c", &end);
     char ch;
     printf("Enter the character you want to print");
+    y++;
     scanf(" %c", &ch);
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+     y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
 
-    Alphabets(start, end, ch);
+    Alphabets(start, end, ch,x,y);
 }
 void printnumbers()
 {
+        int x = 0;
+    int y = 26;
 
     char ch;
     printf("Enter the starting Number: ");
+    y++;
     int start;
     scanf(" %d", &start);
     printf("Enter the ending Number: ");
+    y++;
     int end;
     scanf(" %d", &end);
     printf("Enter the character you want to print");
+    y++;
     scanf(" %c", &ch);
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     scanf(" %c", &colour);
+     y=y+6;
+        printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
+    while (position != 'p')
+    {
+        position = getch();
+        cordinates(&x, &y, position);
+        gotoxy(x, y);
+    }
     (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
                                 : (colour == 'y')   ? yellowcolour()
                                 : (colour == 'g')   ? greencolour()
                                                     : printf("you are not entering a valid colour");
 
-    numbers(start, end, ch);
+    numbers(start, end, ch,x,y);
 }

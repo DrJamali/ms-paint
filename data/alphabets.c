@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
-void printA(char ch)
+#include "../interface/interface_header.h"
+void printA(char ch, int x, int y)
 {
     int rows = 9;
     for (int i = 0; i < rows; i++)
@@ -19,9 +20,11 @@ void printA(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printB(char ch)
+void printB(char ch, int x, int y)
 {
     int rows = 9;
     for (int i = 0; i < rows; i++)
@@ -38,9 +41,11 @@ void printB(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printC(char ch)
+void printC(char ch, int x, int y)
 {
     int radius = 5;
     int diameter = radius * 2;
@@ -58,9 +63,11 @@ void printC(char ch)
                 printf(" ");
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printD(char ch)
+void printD(char ch, int x, int y)
 {
     int radius = 5;
     int diameter = radius * 2;
@@ -79,9 +86,11 @@ void printD(char ch)
         }
 
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printE(char ch)
+void printE(char ch, int x, int y)
 {
     int size = 9;
     for (int i = 1; i <= 9; i++)
@@ -98,9 +107,11 @@ void printE(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printF(char ch)
+void printF(char ch, int x, int y)
 {
     int size = 9;
     for (int i = 1; i <= 9; i++)
@@ -117,9 +128,11 @@ void printF(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printG(char ch)
+void printG(char ch, int x, int y)
 {
     int i, j;
     int size = 9;
@@ -133,9 +146,11 @@ void printG(char ch)
                 printf(" ");
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printH(char ch)
+void printH(char ch, int x, int y)
 {
     int rows = 9;
     for (int i = 1; i <= rows; i++)
@@ -152,9 +167,11 @@ void printH(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printI(char ch)
+void printI(char ch, int x, int y)
 {
     int rows = 9;
     for (int i = 1; i <= rows; i++)
@@ -171,9 +188,11 @@ void printI(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printJ(char ch)
+void printJ(char ch, int x, int y)
 {
     int size = 9;
     for (int i = 0; i < size + 4; i++)
@@ -189,6 +208,8 @@ void printJ(char ch)
         }
     }
     printf("\n");
+            y++;
+        gotoxy(x,y);
     for (int i = 0; i < size; i++)
     {
         for (int j = 0; j < size; j++)
@@ -203,9 +224,11 @@ void printJ(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printK(char ch)
+void printK(char ch, int x, int y)
 {
     int size = 6;
     for (int i = 0; i < size; i++)
@@ -222,6 +245,8 @@ void printK(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
     for (int i = 0; i < size; i++)
     {
@@ -237,9 +262,11 @@ void printK(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printL(char ch)
+void printL(char ch, int x, int y)
 {
     int rows = 9;
     for (int i = 1; i <= rows; i++)
@@ -256,9 +283,11 @@ void printL(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printM(char ch)
+void printM(char ch, int x, int y)
 {
     int height = 9;
     int i, j, counter = 0;
@@ -281,9 +310,11 @@ void printM(char ch)
         else
             counter++;
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printN(char ch)
+void printN(char ch, int x, int y)
 {
     int rows = 9;
     for (int i = 1; i <= rows; i++)
@@ -312,9 +343,11 @@ void printN(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printO(char ch)
+void printO(char ch, int x, int y)
 {
     int radius = 5;
     int diameter = radius * 2;
@@ -333,9 +366,11 @@ void printO(char ch)
         }
 
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printP(char ch)
+void printP(char ch, int x, int y)
 {
     int size = 9;
     for (int i = 0; i < size; i++)
@@ -352,9 +387,11 @@ void printP(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printQ(char ch)
+void printQ(char ch, int x, int y)
 {
     int i, j, k;
     for (i = 0; i <= 11; i++)
@@ -371,9 +408,11 @@ void printQ(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printR(char ch)
+void printR(char ch, int x, int y)
 {
     int size = 9;
     for (int i = 0; i < size / 2 + 1; i++)
@@ -390,6 +429,8 @@ void printR(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
     for (int i = 0; i < size / 2 + 2; i++)
     {
@@ -405,9 +446,11 @@ void printR(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printS(char ch)
+void printS(char ch, int x, int y)
 {
     int i, j;
     int height = 9;
@@ -428,9 +471,11 @@ void printS(char ch)
                 printf(" ");
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printT(char ch)
+void printT(char ch, int x, int y)
 {
     int i, j;
     int height = 10;
@@ -445,9 +490,11 @@ void printT(char ch)
                 printf(" ");
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printU(char ch)
+void printU(char ch, int x, int y)
 {
     int height = 9;
 
@@ -471,9 +518,11 @@ void printU(char ch)
                 printf(" ");
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printV(char ch)
+void printV(char ch, int x, int y)
 {
     int rows = 9;
     for (int i = 0; i < rows; i++)
@@ -494,9 +543,11 @@ void printV(char ch)
             }
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printW(char ch)
+void printW(char ch, int x, int y)
 {
     int height = 9;
 
@@ -518,9 +569,11 @@ void printW(char ch)
             counter++;
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printX(char ch)
+void printX(char ch, int x, int y)
 {
     int i, j, counter = 0;
     int height = 9;
@@ -536,9 +589,11 @@ void printX(char ch)
         }
         counter++;
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void printY(char ch)
+void printY(char ch, int x, int y)
 {
     int height = 9;
 
@@ -554,11 +609,13 @@ void printY(char ch)
                 printf(" ");
         }
         printf("\n");
+                y++;
+        gotoxy(x,y);
         if (i < height / 2)
             counter++;
     }
 }
-void printZ(char ch)
+void printZ(char ch, int x, int y)
 {
     int height = 9;
 
@@ -575,17 +632,24 @@ void printZ(char ch)
         }
         counter--;
         printf("\n");
+                y++;
+        gotoxy(x,y);
     }
 }
-void Alphabets(int start,int end,char ch)
-{
+void Alphabets(int start, int end, char ch, int x, int y) {
     int start1 = start - 65;
     int end1 = end - 65;
-    void (*printFunctions[])(char) = {printA, printB, printC, printD, printE, printF, printG, printH, printI, printJ, printK, printL, printM, printN, printO, printP, printQ, printR, printS, printT, printU, printV, printW, printX, printY, printZ};
-    for (int i = start1; i <= end1; i++)
-    {
-        printf("Printing %c:\n", 'A' + i); // Print the current character being processed
-        printFunctions[i](ch);             // Call the corresponding print function
-        printf("\n");                      // Print a new line after each character is printed
+    void (*printFunctions[])(char, int, int) = {printA, printB, printC, printD, printE, printF, printG, printH, printI, printJ, printK, printL, printM, printN, printO, printP, printQ, printR, printS, printT, printU, printV, printW, printX, printY, printZ};
+    for (int i = start1; i <= end1; i++) {
+          gotoxy(x,y); 
+        printf("Printing %c:\n", 'A' + i);
+                y=y+2;
+        gotoxy(x,y);   
+        printFunctions[i](ch, x, y);
+        printf("\n");
+                y++;
+        gotoxy(x,y);
+        y=y+11;
+
     }
 }
