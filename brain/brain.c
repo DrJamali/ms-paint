@@ -105,6 +105,8 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
 }
 void printline()
 {
+    printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int size;
@@ -137,6 +139,8 @@ void printline()
 }
 void printsquare()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int size;
@@ -173,6 +177,8 @@ void printsquare()
 void printtriangle()
 
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int type;
@@ -228,6 +234,8 @@ void printtriangle()
 }
 void printtextbox()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int width;
@@ -259,6 +267,8 @@ void printtextbox()
 }
 void printtrapezium()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int base1;
@@ -305,6 +315,8 @@ void printtrapezium()
 }
 void printparralelogram()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int hieght;
@@ -346,6 +358,8 @@ void printparralelogram()
 }
 void printdiamond()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int size;
@@ -380,6 +394,8 @@ void printdiamond()
 }
 void printcircle()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int size;
@@ -416,6 +432,8 @@ void printcircle()
 }
 void printheart()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int size;
@@ -447,6 +465,8 @@ void printheart()
 }
 void printpentagon()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     char ch;
@@ -478,6 +498,8 @@ void printpentagon()
 }
 void printhexagon()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int size;
@@ -509,6 +531,8 @@ void printhexagon()
 }
 void printstar()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int size;
@@ -542,6 +566,8 @@ void printstar()
 }
 void printkite()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     int size;
@@ -572,6 +598,8 @@ void printkite()
 }
 void printalphabets()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
     printf("Enter the starting Alphabet(Uppercase Letter): ");
@@ -607,6 +635,8 @@ void printalphabets()
 }
 void printnumbers()
 {
+        printf("\n");
+    whitecolour();
     int x = 0;
     int y = 26;
 
@@ -643,6 +673,8 @@ void printnumbers()
 }
 void savefilemenu()
 {
+        printf("\n");
+    whitecolour();
     printf("\n");
     char dir_add[100];
     printf("Enter the folder absoloute path you want to enter: ");
@@ -658,6 +690,8 @@ void savefilemenu()
 }
 void viewfile()
 {
+        printf("\n");
+    whitecolour();
     char dir_add[100];
     char ch;
     printf("\n");
