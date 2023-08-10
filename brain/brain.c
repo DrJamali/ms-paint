@@ -699,7 +699,7 @@ void viewfile()
     gets(dir_add);
     opendirectory(dir_add);
     printf("\n");
-    printf("Enter the folder absolute path with the file name you want to open");
+    printf("Enter the folder absolute path with the file name you want to save: ");
 
     char folder_add[100];
     gets(folder_add);
