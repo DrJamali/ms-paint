@@ -5,6 +5,21 @@
 #include <unistd.h>
 #include "..\interface\interface_header.h"
 FILE *fptr;
+void printspaces(int size){
+int width;
+int height;
+getConsoleSize(&width,&height);
+
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = 0; j < width; j++)
+        {
+            printf(" ");
+        }
+        printf("\n");
+    }
+    
+}
 void getConsoleSize(int *width, int *height)
 {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -177,7 +192,8 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
         else if (ch == 8)
         {
             whitecolour();
-            system("cls");
+            gotoxy(0,0);
+            printspaces(25);
             Options();
         }
         else if (ch == 13)
@@ -220,7 +236,9 @@ void Options()
     }
     else if (ch == 50)
     {
-        system("cls");
+            whitecolour();
+            gotoxy(0,0);
+            printspaces(12);
         free_draw_instruction(x, y, headinglength, middle, width, middle, ch);
     }
     else if (ch == 51)
