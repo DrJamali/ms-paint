@@ -6,6 +6,13 @@
 #include <math.h>
 #include <string.h>
 
+void get_colour(char col){
+     (col == 'r') ? redcolour() : (col == 'b') ? bluecolour()
+                                : (col == 'y')   ? yellowcolour()
+                                : (col == 'g')   ? greencolour()
+                                                    : printf("you are not entering a valid colour");
+
+}
 void free_drawing(int x, int y, int headinglength, int width, int hieght, int middle, char ch)
 {
     getConsoleSize(&width, &hieght);
@@ -129,11 +136,7 @@ void printline()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                : (colour == 'w')   ? whitecolour()
-                                                    : printf("you are not entering a valid colour");
+ get_colour(colour);
 
     line(ch, size, x, y);
 }
@@ -168,10 +171,7 @@ void printsquare()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
     square(size, ch, fill, x, y);
 }
 void printtriangle()
@@ -225,10 +225,7 @@ void printtriangle()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
 
     triangles(type, rows, fill, shape, ch, side, x, y);
 }
@@ -259,10 +256,7 @@ void printtextbox()
         gotoxy(x, y);
     }
 
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
     textbox(width, hieght, x, y);
 }
 void printtrapezium()
@@ -306,10 +300,7 @@ void printtrapezium()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
 
     trapezium(base1, base2, fill, ch, x, y);
 }
@@ -350,10 +341,7 @@ void printparralelogram()
         gotoxy(x, y);
     }
 
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
     parralelogram(hieght, width, fill, ch, x, y);
 }
 void printdiamond()
@@ -386,10 +374,7 @@ void printdiamond()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
     diamond(size, fill, ch, x, y);
 }
 void printcircle()
@@ -423,10 +408,7 @@ void printcircle()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
 
     circle(size, fill, ch, x, y);
 }
@@ -457,10 +439,7 @@ void printheart()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
     heart(size, ch, x, y);
 }
 void printpentagon()
@@ -490,10 +469,7 @@ void printpentagon()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
     pentagon(size, ch, x, y);
 }
 void printhexagon()
@@ -523,10 +499,7 @@ void printhexagon()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
     hexagon(size, ch, x, y);
 }
 void printstar()
@@ -558,10 +531,7 @@ void printstar()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
     star(size, type, ch, x, y);
 }
 void printkite()
@@ -590,10 +560,7 @@ void printkite()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
     kite(size, ch, x, y);
 }
 void printalphabets()
@@ -626,10 +593,7 @@ void printalphabets()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
 
     Alphabets(start, end, ch, x, y);
 }
@@ -664,10 +628,7 @@ void printnumbers()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-    (colour == 'r') ? redcolour() : (colour == 'b') ? bluecolour()
-                                : (colour == 'y')   ? yellowcolour()
-                                : (colour == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
+  get_colour(colour);
 
     numbers(start, end, ch, x, y);
 }
@@ -677,7 +638,7 @@ void savefilemenu()
     whitecolour();
     printf("\n");
     char dir_add[100];
-    printf("Enter the folder absoloute path you want to enter: ");
+    printf("Enter the folder absoloute path you want to Open: ");
     gets(dir_add);
     gets(dir_add);
     opendirectory(dir_add);
