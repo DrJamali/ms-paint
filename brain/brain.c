@@ -611,7 +611,7 @@ void printalphabets()
     char end;
     scanf(" %c", &end);
     char ch;
-    printf("Enter the character you want to print");
+    printf("Enter the character you want to print: ");
     y++;
     scanf(" %c", &ch);
     char colour;
@@ -649,7 +649,7 @@ void printnumbers()
     y++;
     int end;
     scanf(" %d", &end);
-    printf("Enter the character you want to print");
+    printf("Enter the character you want to print: ");
     y++;
     scanf(" %c", &ch);
     char colour;
