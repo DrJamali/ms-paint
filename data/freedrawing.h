@@ -4,3 +4,4 @@ void bluecolour();
 void greencolour();
 void redcolour();
 void yellowcolour();
+void whitecolour();

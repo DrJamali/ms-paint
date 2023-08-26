@@ -7,6 +7,7 @@
 #include "freedrawing.h"
 #include "filefunctions.h"
 #include "console_function.h"
+#include"..\interface\interface.h"
 extern FILE *fptr;
 
 #include <stdio.h>
