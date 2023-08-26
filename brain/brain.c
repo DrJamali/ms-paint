@@ -1,17 +1,11 @@
 #include "./brain_header.h"
-#include "../interface/interface_header.h"
-#include <stdio.h>
-#include <conio.h>
-#include <windows.h>
-#include <math.h>
-#include <string.h>
-
-void get_colour(char col){
-     (col == 'r') ? redcolour() : (col == 'b') ? bluecolour()
-                                : (col == 'y')   ? yellowcolour()
-                                : (col == 'g')   ? greencolour()
-                                                    : printf("you are not entering a valid colour");
-
+FILE *fptr;
+void get_colour(char col)
+{
+    (col == 'r') ? redcolour() : (col == 'b') ? bluecolour()
+                             : (col == 'y')   ? yellowcolour()
+                             : (col == 'g')   ? greencolour()
+                                              : printf("you are not entering a valid colour");
 }
 void free_drawing(int x, int y, int headinglength, int width, int hieght, int middle, char ch)
 {
@@ -35,7 +29,6 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
             cordinates(&x, &y, ch);
             gotoxy(x, y);
             printf("*");
-            fprintf(fptr, "*");
         }
         else if (ch == 'b')
         {
@@ -45,7 +38,6 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
             cordinates(&x, &y, ch);
             gotoxy(x, y);
             printf("*");
-            fprintf(fptr, "*");
         }
         else if (ch == 'g')
         {
@@ -55,7 +47,6 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
             cordinates(&x, &y, ch);
             gotoxy(x, y);
             printf("*");
-            fprintf(fptr, "*");
         }
         else if (ch == 'y')
         {
@@ -65,7 +56,6 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
             cordinates(&x, &y, ch);
             gotoxy(x, y);
             printf("*");
-            fprintf(fptr, "*");
         }
 
         else if (ch == 32)
@@ -78,7 +68,6 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
             cordinates(&x, &y, ch);
             gotoxy(x, y);
             printf("*");
-            fprintf(fptr, "*");
         }
         else if (ch == 8)
         {
@@ -88,7 +77,6 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
             cordinates(&x, &y, ch);
             gotoxy(x, y);
             printf(" ");
-            fprintf(fptr, "*");
         }
         else if (ch == 'c')
         {
@@ -136,13 +124,13 @@ void printline()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
- get_colour(colour);
+    get_colour(colour);
 
     line(ch, size, x, y);
 }
 void printsquare()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -171,13 +159,13 @@ void printsquare()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
     square(size, ch, fill, x, y);
 }
 void printtriangle()
 
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -225,13 +213,13 @@ void printtriangle()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
 
     triangles(type, rows, fill, shape, ch, side, x, y);
 }
 void printtextbox()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -256,12 +244,12 @@ void printtextbox()
         gotoxy(x, y);
     }
 
-  get_colour(colour);
+    get_colour(colour);
     textbox(width, hieght, x, y);
 }
 void printtrapezium()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -300,13 +288,13 @@ void printtrapezium()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
 
     trapezium(base1, base2, fill, ch, x, y);
 }
 void printparralelogram()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -341,12 +329,12 @@ void printparralelogram()
         gotoxy(x, y);
     }
 
-  get_colour(colour);
+    get_colour(colour);
     parralelogram(hieght, width, fill, ch, x, y);
 }
 void printdiamond()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -374,12 +362,12 @@ void printdiamond()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
     diamond(size, fill, ch, x, y);
 }
 void printcircle()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -408,13 +396,13 @@ void printcircle()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
 
     circle(size, fill, ch, x, y);
 }
 void printheart()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -439,12 +427,12 @@ void printheart()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
     heart(size, ch, x, y);
 }
 void printpentagon()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -469,12 +457,12 @@ void printpentagon()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
     pentagon(size, ch, x, y);
 }
 void printhexagon()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -499,12 +487,12 @@ void printhexagon()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
     hexagon(size, ch, x, y);
 }
 void printstar()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -531,12 +519,12 @@ void printstar()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
     star(size, type, ch, x, y);
 }
 void printkite()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -560,12 +548,12 @@ void printkite()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
     kite(size, ch, x, y);
 }
 void printalphabets()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -593,13 +581,13 @@ void printalphabets()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
 
     Alphabets(start, end, ch, x, y);
 }
 void printnumbers()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
@@ -628,13 +616,13 @@ void printnumbers()
         cordinates(&x, &y, position);
         gotoxy(x, y);
     }
-  get_colour(colour);
+    get_colour(colour);
 
     numbers(start, end, ch, x, y);
 }
 void savefilemenu()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     printf("\n");
     char dir_add[100];
@@ -651,7 +639,7 @@ void savefilemenu()
 }
 void viewfile()
 {
-        printf("\n");
+    printf("\n");
     whitecolour();
     char dir_add[100];
     char ch;

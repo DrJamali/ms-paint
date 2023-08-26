@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <math.h>
-#include "../interface/interface_header.h"
+#include"data_header.h"
+FILE *fptr;
 void printA(char ch, int x, int y)
 {
     int rows = 9;
@@ -25,7 +24,7 @@ void printA(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -49,7 +48,7 @@ void printB(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -78,7 +77,7 @@ void printC(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -108,7 +107,7 @@ void printD(char ch, int x, int y)
         }
 
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -132,7 +131,7 @@ void printE(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -156,7 +155,7 @@ void printF(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -181,7 +180,7 @@ void printG(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -205,7 +204,7 @@ void printH(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -229,7 +228,7 @@ void printI(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -252,7 +251,7 @@ void printJ(char ch, int x, int y)
         }
     }
     printf("\n");
-    fprintf(fptr,"\n");
+    fprintf(fptr, "\n");
     y++;
     gotoxy(x, y);
     for (int i = 0; i < size; i++)
@@ -271,7 +270,7 @@ void printJ(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -295,7 +294,7 @@ void printK(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -315,7 +314,7 @@ void printK(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -339,7 +338,7 @@ void printL(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -377,7 +376,7 @@ void printM(char ch, int x, int y)
         else
             counter++;
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -415,7 +414,7 @@ void printN(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -445,7 +444,7 @@ void printO(char ch, int x, int y)
         }
 
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -469,7 +468,7 @@ void printP(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -493,7 +492,7 @@ void printQ(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -517,7 +516,7 @@ void printR(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -537,7 +536,7 @@ void printR(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -575,7 +574,7 @@ void printS(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -589,14 +588,19 @@ void printT(char ch, int x, int y)
         for (j = 0; j < height; j++)
         {
             if (i == 0 || j == height / 2 - 1)
-               { printf("%c", ch);
-            fprintf(fptr, "%c", ch);}
+            {
+                printf("%c", ch);
+                fprintf(fptr, "%c", ch);
+            }
 
-            else {printf(" ");
-            fprintf(fptr, " ");}
+            else
+            {
+                printf(" ");
+                fprintf(fptr, " ");
+            }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -609,26 +613,39 @@ void printU(char ch, int x, int y)
     for (i = 0; i < height; i++)
     {
         if (i != 0 && i != height - 1)
-          {  printf("%c", ch);
-        fprintf(fptr, "%c", ch);}
+        {
+            printf("%c", ch);
+            fprintf(fptr, "%c", ch);
+        }
 
-        else {printf(" ");
-        fprintf(fptr, " ");}
+        else
+        {
+            printf(" ");
+            fprintf(fptr, " ");
+        }
         for (j = 0; j < height; j++)
         {
             if (((i == height - 1) && j >= 0 && j < height - 1))
-              {  printf("%c", ch);
-            fprintf(fptr, "%c", ch);}
+            {
+                printf("%c", ch);
+                fprintf(fptr, "%c", ch);
+            }
 
             else if (j == height - 1 && i != 0 && i != height - 1)
-     {        {   printf("%c", ch);
-            fprintf(fptr, "%c", ch);}
-}
-            else{ printf(" ");
-            fprintf(fptr, " ");}
+            {
+                {
+                    printf("%c", ch);
+                    fprintf(fptr, "%c", ch);
+                }
+            }
+            else
+            {
+                printf(" ");
+                fprintf(fptr, " ");
+            }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -657,7 +674,7 @@ void printV(char ch, int x, int y)
             }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -674,20 +691,27 @@ void printW(char ch, int x, int y)
         for (j = 0; j <= height; j++)
         {
             if (j == height)
-               { printf("%c", ch);
-            fprintf(fptr, "%c", ch);}
+            {
+                printf("%c", ch);
+                fprintf(fptr, "%c", ch);
+            }
             else if ((i >= height / 2) && (j == counter || j == height - counter - 1))
-              {  printf("%c", ch);
-            fprintf(fptr, "%c", ch);}
-            else {printf(" ");
-            fprintf(fptr, " ");}
+            {
+                printf("%c", ch);
+                fprintf(fptr, "%c", ch);
+            }
+            else
+            {
+                printf(" ");
+                fprintf(fptr, " ");
+            }
         }
         if (i >= height / 2)
         {
             counter++;
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -701,15 +725,19 @@ void printX(char ch, int x, int y)
         for (j = 0; j <= height; j++)
         {
             if (j == counter || j == height - counter)
-             {   printf("%c", ch);
-            fprintf(fptr, "%c", ch);
-}
-            else {printf(" ");
-            fprintf(fptr, " ");}
+            {
+                printf("%c", ch);
+                fprintf(fptr, "%c", ch);
+            }
+            else
+            {
+                printf(" ");
+                fprintf(fptr, " ");
+            }
         }
         counter++;
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -724,14 +752,19 @@ void printY(char ch, int x, int y)
         for (j = 0; j <= height; j++)
         {
             if (j == counter || j == height - counter && i <= height / 2)
-              {  printf("%c", ch);
-            fprintf(fptr, "%c", ch);}
+            {
+                printf("%c", ch);
+                fprintf(fptr, "%c", ch);
+            }
 
-            else {printf(" ");
-            fprintf(fptr, " ");}
+            else
+            {
+                printf(" ");
+                fprintf(fptr, " ");
+            }
         }
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
         if (i < height / 2)
@@ -748,15 +781,19 @@ void printZ(char ch, int x, int y)
         for (j = 0; j < height; j++)
         {
             if (i == 0 || i == height - 1 || j == counter)
-              {  printf("%c", ch);
-            fprintf(fptr, "%c", ch);
-}
-            else {printf(" ");
-            fprintf(fptr, " ");}
+            {
+                printf("%c", ch);
+                fprintf(fptr, "%c", ch);
+            }
+            else
+            {
+                printf(" ");
+                fprintf(fptr, " ");
+            }
         }
         counter--;
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -774,7 +811,7 @@ void Alphabets(int start, int end, char ch, int x, int y)
         gotoxy(x, y);
         printFunctions[i](ch, x, y);
         printf("\n");
-        fprintf(fptr,"\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
         y = y + 11;

@@ -1,14 +1,10 @@
-#include <windows.h>
-#include <stdio.h>
-#include <conio.h>
-#include <string.h>
-#include <unistd.h>
 #include "..\interface\interface_header.h"
-FILE *fptr;
-void printspaces(int size){
-int width;
-int height;
-getConsoleSize(&width,&height);
+
+void printspaces(int size)
+{
+    int width;
+    int height;
+    getConsoleSize(&width, &height);
 
     for (int i = 0; i < size; i++)
     {
@@ -18,14 +14,6 @@ getConsoleSize(&width,&height);
         }
         printf("\n");
     }
-    
-}
-void getConsoleSize(int *width, int *height)
-{
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    *width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-    *height = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
 }
 
 void printStarLine(int length, int x, int y)
@@ -192,7 +180,7 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
         else if (ch == 8)
         {
             whitecolour();
-            gotoxy(0,0);
+            gotoxy(0, 0);
             printspaces(25);
             Options();
         }
@@ -236,9 +224,9 @@ void Options()
     }
     else if (ch == 50)
     {
-            whitecolour();
-            gotoxy(0,0);
-            printspaces(12);
+        whitecolour();
+        gotoxy(0, 0);
+        printspaces(12);
         free_draw_instruction(x, y, headinglength, middle, width, middle, ch);
     }
     else if (ch == 51)

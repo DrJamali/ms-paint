@@ -1,4 +1,4 @@
-void freedrawing(int x, int y, int headinglength, int width, int hieght, int middle, char ch);
+void free_drawing(int x, int y, int headinglength, int width, int hieght, int middle, char ch);
 void printline();
 void printsquare();
 void printtriangle();

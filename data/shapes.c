@@ -1,6 +1,5 @@
-
-#include <math.h>
-#include "../interface/interface_header.h"
+#include"data_header.h"
+FILE *fptr;
 void square(int size, char ch, int fill, int x, int y)
 {
     if (fill == 1)

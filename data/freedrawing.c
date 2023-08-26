@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include <conio.h>
-#include <windows.h>
-
+#include"data_header.h"
+FILE *fptr;
 void bluecolour()
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);

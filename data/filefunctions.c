@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <dirent.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <conio.h>
-#include "..\interface\interface_header.h"
+#include"data_header.h"
+FILE *fptr;
 void opendirectory(char str[])
 {
     DIR *directory;

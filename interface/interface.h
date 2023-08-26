@@ -1,5 +1,4 @@
  void Interface();
- void getConsoleSize(int *width, int *height);
  void printStarLine(int length, int x, int y);
  void printHeading(int x, int y, char string[]);
  void Options();

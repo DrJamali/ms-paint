@@ -1,0 +1,1 @@
+void getConsoleSize(int *width, int *height);
