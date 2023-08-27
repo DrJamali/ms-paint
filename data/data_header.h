@@ -5,10 +5,9 @@
 #include "alphabets.h"
 #include "numbers.h"
 #include "freedrawing.h"
-#include "filefunctions.h"
 #include "console_function.h"
 #include"..\interface\interface.h"
-extern FILE *fptr;
+// extern FILE *fptr;
 
 #include <stdio.h>
 #include <string.h>
