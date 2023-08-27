@@ -1,11 +1,30 @@
 #include "..\interface\interface_header.h"
-FILE *fptr;
 void get_colour(char col)
 {
-    (col == 'r') ? redcolour() : (col == 'b') ? bluecolour()
-                             : (col == 'y')   ? yellowcolour()
-                             : (col == 'g')   ? greencolour()
-                                              : printf("you are not entering a valid colour");
+    if (col == 'r')
+    {
+        redcolour();
+    }
+    else if (col == 'b')
+    {
+        bluecolour();
+    }
+    else if (col == 'y')
+    {
+        yellowcolour();
+    }
+    else if (col == 'g')
+    {
+        greencolour();
+    }
+    else if (col == 'w')
+    {
+        whitecolour();
+    }
+    else
+    {
+        printf("invalid colour");
+    }
 }
 void printspaces(int size)
 {
@@ -286,7 +305,7 @@ void Interface()
     int y;
     int middle;
     MainPage(x, y, headinglength, width, hieght, middle);
-    savefiledefault(fptr);
+    savefiledefault();
     int ch = getch();
     if (ch == 'r')
 

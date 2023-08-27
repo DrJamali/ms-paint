@@ -1,5 +1,4 @@
 #include"data_header.h"
-FILE *fptr;
 void printA(char ch, int x, int y)
 {
     int rows = 9;

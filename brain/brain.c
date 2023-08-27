@@ -1,5 +1,4 @@
 #include "./brain_header.h"
-FILE *fptr;
 void free_draw_input(int x, int y, int headinglength, int width, int hieght, int middle, int ch)
 {
     if (ch == 'r')

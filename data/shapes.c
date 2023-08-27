@@ -1,5 +1,4 @@
 #include "data_header.h"
-FILE *fptr;
 void fill_square(int size, char ch, int x, int y)
 {
 

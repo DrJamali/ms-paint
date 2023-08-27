@@ -9,10 +9,11 @@
 #include<dirent.h>
 #include<unistd.h>
 
+extern FILE *fptr; 
 #include "shapes.h"
 #include "alphabets.h"
 #include "numbers.h"
 #include "freedrawing.h"
 #include "console_function.h"
-extern FILE *fptr;
+
 

@@ -1,5 +1,4 @@
 #include"data_header.h"
-FILE *fptr;
 void print0(char ch, int x, int y)
 {
     int radius = 5;
