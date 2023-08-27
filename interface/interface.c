@@ -1,4 +1,5 @@
 #include "..\interface\interface_header.h"
+FILE *fptr;
 void get_colour(char col)
 {
     (col == 'r') ? redcolour() : (col == 'b') ? bluecolour()
@@ -21,7 +22,6 @@ void printspaces(int size)
         printf("\n");
     }
 }
-
 void printStarLine(int length, int x, int y)
 {
     gotoxy(x, y);
@@ -235,14 +235,14 @@ void Options()
         printspaces(12);
         free_draw_instruction(x, y, headinglength, middle, width, middle);
     }
-    // else if (ch == 51)
-    // {
-    //     // savefilemenu();
-    // }
-    // else if (ch == 52)
-    // {
-    //     viewfile();
-    // }
+    else if (ch == 51)
+    {
+        savefilemenu();
+    }
+    else if (ch == 52)
+    {
+        viewfile();
+    }
     else if (ch == 'q' || ch == 'Q')
     {
         system("cls");
@@ -276,7 +276,6 @@ void MainPage(int x, int y, int headinglength, int width, int hieght, int middle
     middle = (width - headinglength) / 2;
     printHeading(middle, y, string);
 }
-
 void Interface()
 {
     int width, hieght;
@@ -287,7 +286,7 @@ void Interface()
     int y;
     int middle;
     MainPage(x, y, headinglength, width, hieght, middle);
-    // savefiledefault(fptr);
+    savefiledefault(fptr);
     int ch = getch();
     if (ch == 'r')
 
@@ -308,7 +307,6 @@ void Interface()
         Options();
     }
 }
-
 void free_drawing(int x, int y, int headinglength, int width, int hieght, int middle)
 {
     getConsoleSize(&width, &hieght);
@@ -328,6 +326,18 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
 
             cordinates(&x, &y, ch);
             gotoxy(x, y);
+        }
+        else if (ch == 'c')
+        {
+            whitecolour();
+            system("cls");
+            free_draw_instruction(x, y, headinglength, middle, width, middle);
+        }
+        else if (ch == 'm')
+        {
+            whitecolour();
+            system("cls");
+            Options();
         }
         else
         {
@@ -858,20 +868,20 @@ void printnumbers()
 
     numbers(start, end, ch, x, y);
 }
-// void savefilemenu()
-// {
-//     printf("\n");
-//     whitecolour();
-//     printf("\n");
-//     char dir_add[100];
-//     printf("Enter the folder absoloute path you want to Open: ");
-//     gets(dir_add);
-//     gets(dir_add);
-//     opendirectory(dir_add);
-//     printf("\n");
-//     printf("Enter the folder absolute path with the file name");
+void savefilemenu()
+{
+    printf("\n");
+    whitecolour();
+    printf("\n");
+    char dir_add[100];
+    printf("Enter the folder absoloute path you want to Open: ");
+    gets(dir_add);
+    gets(dir_add);
+    opendirectory(dir_add);
+    printf("\n");
+    printf("Enter the folder absolute path with the file name");
 
-//     char folder_add[100];
-//     gets(folder_add);
-//     savefile(folder_add, fptr);
-// }
+    char folder_add[100];
+    gets(folder_add);
+    savefile(folder_add, fptr);
+}

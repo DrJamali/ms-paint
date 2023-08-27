@@ -1,4 +1,5 @@
 #include"data_header.h"
+FILE *fptr;
 void printA(char ch, int x, int y)
 {
     int rows = 9;
@@ -7,23 +8,23 @@ void printA(char ch, int x, int y)
         for (int j = i; j < rows; j++)
         {
             printf(" ");
-            // fprintf(fptr, " ");
+            fprintf(fptr, " ");
         }
         for (int j = 0; j < (2 * i) + 1; j++)
         {
             if (j == 0 || i == 0 || i == (rows / 2) || j == 2 * i)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -38,16 +39,16 @@ void printB(char ch, int x, int y)
             if ((i == 0 && j < rows - 2) || j == 0 || (i == rows / 2 - 1 && j < rows - 2) || (i == rows - 1 && j < rows - 2) || (j == rows - 1 && (i != 0 && i != rows / 2 - 1 && i != rows - 1)))
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -67,16 +68,16 @@ void printC(char ch, int x, int y)
             if (distance == radius)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -96,17 +97,17 @@ void printD(char ch, int x, int y)
             if (distance == radius || j == radius - 2)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
 
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -121,16 +122,16 @@ void printE(char ch, int x, int y)
             if (i == 9 / 2 || j == 1 || i == 1 || i == 9)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -145,16 +146,16 @@ void printF(char ch, int x, int y)
             if (i == 9 / 2 || j == 1 || i == 1)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -170,16 +171,16 @@ void printG(char ch, int x, int y)
             if ((j == 1 && i != 0 && i != size - 1) || ((i == 0 || i == size - 1) && j > 1 && j < size - 2) || (i == ((size - 1) / 2) && j > 3 && j < size - 1) || (j == size - 2 && i != 0 && i >= ((size - 1) / 2) && i != size - 1))
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -194,16 +195,16 @@ void printH(char ch, int x, int y)
             if (i == rows / 2 + 1 || j == 1 || j == rows)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -218,16 +219,16 @@ void printI(char ch, int x, int y)
             if (i == 1 || i == rows || j == rows / 2 + 1)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -241,16 +242,16 @@ void printJ(char ch, int x, int y)
         if (i > size / 2)
         {
             printf("%c", ch);
-            // fprintf(fptr, "%c", ch);
+            fprintf(fptr, "%c", ch);
         }
         else
         {
             printf(" ");
-            // fprintf(fptr, " ");
+            fprintf(fptr, " ");
         }
     }
     printf("\n");
-    // fprintf(fptr, "\n");
+    fprintf(fptr, "\n");
     y++;
     gotoxy(x, y);
     for (int i = 0; i < size; i++)
@@ -260,16 +261,16 @@ void printJ(char ch, int x, int y)
             if (i == size - 1 || j == size - 1 || (j == 0 && (i > size - 4)))
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -284,16 +285,16 @@ void printK(char ch, int x, int y)
             if (j == i || j == size - 1)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -304,16 +305,16 @@ void printK(char ch, int x, int y)
             if (j == 0 || j == i)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -328,16 +329,16 @@ void printL(char ch, int x, int y)
             if (j == 1 || i == rows)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -349,23 +350,23 @@ void printM(char ch, int x, int y)
     for (i = 0; i < height; i++)
     {
         printf("%c", ch);
-        // fprintf(fptr, "%c", ch);
+        fprintf(fptr, "%c", ch);
         for (j = 0; j <= height; j++)
         {
             if (j == height)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else if (j == counter || j == height - counter - 1)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         if (counter == height / 2)
@@ -375,7 +376,7 @@ void printM(char ch, int x, int y)
         else
             counter++;
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -390,18 +391,18 @@ void printN(char ch, int x, int y)
             if (j == 1 || j == i)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         for (int j = i; j < rows - 1; j++)
         {
             printf(" ");
-            // fprintf(fptr, " ");
+            fprintf(fptr, " ");
         }
 
         for (int j = 1; j == 1; j++)
@@ -409,11 +410,11 @@ void printN(char ch, int x, int y)
             if (i < rows)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -433,17 +434,17 @@ void printO(char ch, int x, int y)
             if (distance == radius)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
 
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -458,16 +459,16 @@ void printP(char ch, int x, int y)
             if (i == 0 || j == 0 || i == size / 2 || ((j == size - 1) && (i < size / 2)))
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -482,16 +483,16 @@ void printQ(char ch, int x, int y)
             if (i >= 0 && i < 2 && j < 9 || i >= 2 && i < 9 && j == 0 || j == 8 && i < 10 || i > 7 && i <= 9 && j < 9 || i >= 9 && i <= 11 && j == i)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -506,16 +507,16 @@ void printR(char ch, int x, int y)
             if (i == 0 || j == 0 || i == size / 2 || j == size - 1)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -526,16 +527,16 @@ void printR(char ch, int x, int y)
             if (j == 0 || j == i)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -551,29 +552,29 @@ void printS(char ch, int x, int y)
             if ((i == 0 || i == height / 2 || i == height - 1))
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
 
             else if (i < height / 2 && j == 0)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
 
             else if (i > height / 2 && j == height - 1)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
 
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -589,17 +590,17 @@ void printT(char ch, int x, int y)
             if (i == 0 || j == height / 2 - 1)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
 
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -614,37 +615,37 @@ void printU(char ch, int x, int y)
         if (i != 0 && i != height - 1)
         {
             printf("%c", ch);
-            // fprintf(fptr, "%c", ch);
+            fprintf(fptr, "%c", ch);
         }
 
         else
         {
             printf(" ");
-            // fprintf(fptr, " ");
+            fprintf(fptr, " ");
         }
         for (j = 0; j < height; j++)
         {
             if (((i == height - 1) && j >= 0 && j < height - 1))
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
 
             else if (j == height - 1 && i != 0 && i != height - 1)
             {
                 {
                     printf("%c", ch);
-                    // fprintf(fptr, "%c", ch);
+                    fprintf(fptr, "%c", ch);
                 }
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -657,23 +658,23 @@ void printV(char ch, int x, int y)
         for (int j = 0; j < i + 1; j++)
         {
             printf(" ");
-            // fprintf(fptr, " ");
+            fprintf(fptr, " ");
         }
         for (int j = 2 * i; j < 2 * rows - 1; j++)
         {
             if (j == 2 * i || i == rows - 1 || j == 2 * rows - 2)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -686,23 +687,23 @@ void printW(char ch, int x, int y)
     for (i = 0; i < height; i++)
     {
         printf("%c", ch);
-        // fprintf(fptr, "%c", ch);
+        fprintf(fptr, "%c", ch);
         for (j = 0; j <= height; j++)
         {
             if (j == height)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else if ((i >= height / 2) && (j == counter || j == height - counter - 1))
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         if (i >= height / 2)
@@ -710,7 +711,7 @@ void printW(char ch, int x, int y)
             counter++;
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -726,17 +727,17 @@ void printX(char ch, int x, int y)
             if (j == counter || j == height - counter)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         counter++;
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }
@@ -753,17 +754,17 @@ void printY(char ch, int x, int y)
             if (j == counter || j == height - counter && i <= height / 2)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
 
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
         if (i < height / 2)
@@ -782,17 +783,17 @@ void printZ(char ch, int x, int y)
             if (i == 0 || i == height - 1 || j == counter)
             {
                 printf("%c", ch);
-                // fprintf(fptr, "%c", ch);
+                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                // fprintf(fptr, " ");
+                fprintf(fptr, " ");
             }
         }
         counter--;
         printf("\n");
-        // fprintf(fptr, "\n");
+        fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
     }

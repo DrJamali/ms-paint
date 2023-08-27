@@ -22,3 +22,4 @@ void printstar();
 void printkite();
 void printalphabets();
 void printnumbers();
+void savefilemenu();

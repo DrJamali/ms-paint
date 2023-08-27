@@ -8,3 +8,8 @@ void trapezium_type(int base1, int base2, int fill, char ch, int x, int y);
 void circle_type(int size,int fill, char ch, int x, int y);
 void diamond_type(int size,int fill, char ch, int x, int y);
 void star_type(int rows,int type, char ch, int x, int y);
+void opendirectory(char str[]);
+void viewfile();
+void savefiledefault();
+void savefile(char path[], FILE *fptr);
+void openfile(char path[], FILE *fptr);

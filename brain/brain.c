@@ -1,5 +1,6 @@
 #include "./brain_header.h"
-void free_draw_input(int x, int y,int headinglength, int width, int hieght, int middle, int ch)
+FILE *fptr;
+void free_draw_input(int x, int y, int headinglength, int width, int hieght, int middle, int ch)
 {
     if (ch == 'r')
     {
@@ -52,19 +53,6 @@ void free_draw_input(int x, int y,int headinglength, int width, int hieght, int 
         gotoxy(x, y);
         printf(" ");
     }
-    else if (ch == 'c')
-    {
-        whitecolour();
-        system("cls");
-        free_draw_instruction(x, y, headinglength, middle, width, middle);
-    }
-    else if (ch == 'm')
-    {
-        whitecolour();
-        system("cls");
-        Options();
-    }
-
 }
 void Alphabets(int start, int end, char ch, int x, int y)
 {
@@ -102,199 +90,197 @@ void numbers(int start, int end, char ch, int x, int y)
         // Print a new line after each character is printed
     }
 }
+void viewfile()
+{
+    printf("\n");
+    whitecolour();
+    char dir_add[100];
+    char ch;
+    printf("\n");
+    printf("Enter the folder absoloute path you want to open: ");
+    gets(dir_add);
+    opendirectory(dir_add);
+    printf("\n");
+    printf("Enter the folder absolute path with the file name you want to save: ");
 
+    char folder_add[100];
+    gets(folder_add);
+    openfile(folder_add, fptr);
+    printf("Press any key to exit");
+    ch = getch();
+    exit(1);
+}
+void opendirectory(char str[])
+{
+    DIR *directory;
+    struct dirent *entry;
+    directory = opendir(str);
+    if (directory == NULL)
+    {
+        printf("Eroor occured");
+    }
+    while ((entry = readdir(directory)) != NULL)
+    {
+        printf("%s\n", entry->d_name);
+    }
+}
+void savefiledefault()
+{
 
-// void viewfile()
-// {
-//     printf("\n");
-//     whitecolour();
-//     char dir_add[100];
-//     char ch;
-//     printf("\n");
-//     printf("Enter the folder absoloute path you want to open: ");
-//     gets(dir_add);
-//     opendirectory(dir_add);
-//     printf("\n");
-//     printf("Enter the folder absolute path with the file name you want to save: ");
+    fptr = fopen("default.txt", "w");
+}
+void savefile(char path[], FILE *fptr)
+{
+    fclose(fptr);
+    FILE *fptr2;
+    char ch;
+    char choice;
 
-//     char folder_add[100];
-//     gets(folder_add);
-//     openfile(folder_add, fptr);
-//     printf("Press any key to exit");
-//     ch = getch();
-//     exit(1);
-// }
-// void opendirectory(char str[])
-// {
-//     DIR *directory;
-//     struct dirent *entry;
-//     directory = opendir(str);
-//     if (directory == NULL)
-//     {
-//         printf("Eroor occured");
-//     }
-//     while ((entry = readdir(directory)) != NULL)
-//     {
-//         printf("%s\n", entry->d_name);
-//     }
-// }
-// void savefiledefault()
-// {
+    strcat(path, ".txt");
 
-//     fptr = fopen("default.txt", "w");
-// }
+    if (access(path, F_OK) == 0)
+    {
+        printf("File '%s' already exists.\n", path);
+        printf("Do you want to replace it (y/n): ");
+        scanf(" %c", &choice);
+        if (choice == 'y')
+        {
+            fptr = fopen("default.txt", "r");
+            fptr2 = fopen(path, "w");
+            if (fptr == NULL || fptr2 == NULL)
+            {
+                printf("Error in opening/creating files\n");
+                return;
+            }
 
-// void savefile(char path[], FILE *fptr)
-// {
-//     fclose(fptr);
-//     FILE *fptr2;
-//     char ch;
-//     char choice;
+            while ((ch = fgetc(fptr)) != EOF)
+            {
+                fputc(ch, fptr2);
+            }
+            printf("Your file has been created.\nPress 'm' to go back to the main menu.\n");
+            fclose(fptr);
+            fclose(fptr2);
+        }
+    }
+    else
+    {
+        fptr = fopen("default.txt", "r");
+        fptr2 = fopen(path, "w");
+        if (fptr == NULL || fptr2 == NULL)
+        {
+            printf("Error in opening/creating files\n");
+            return;
+        }
 
-//     strcat(path, ".txt");
+        while ((ch = fgetc(fptr)) != EOF)
+        {
+            fputc(ch, fptr2);
+        }
+        printf("Your file has been created.\nPress 'm' to go back to the main menu.\n");
+        fclose(fptr);
+        fclose(fptr2);
+        getch();
+        char ch;
+        while (ch == 'q')
+        {
+            printf("Press 'q' to quit");
+        }
+    }
+}
+void openfile(char path[], FILE *fptr)
+{
+    FILE *fptr2;
+    char ch;
+    char choice;
+    strcat(path, ".txt");
 
-//     if (access(path, F_OK) == 0)
-//     {
-//         printf("File '%s' already exists.\n", path);
-//         printf("Do you want to replace it (y/n): ");
-//         scanf(" %c", &choice);
-//         if (choice == 'y')
-//         {
-//             fptr = fopen("default.txt", "r");
-//             fptr2 = fopen(path, "w");
-//             if (fptr == NULL || fptr2 == NULL)
-//             {
-//                 printf("Error in opening/creating files\n");
-//                 return;
-//             }
-
-//             while ((ch = fgetc(fptr)) != EOF)
-//             {
-//                 fputc(ch, fptr2);
-//             }
-//             printf("Your file has been created.\nPress 'm' to go back to the main menu.\n");
-//             fclose(fptr);
-//             fclose(fptr2);
-//         }
-//     }
-//     else
-//     {
-//         fptr = fopen("default.txt", "r");
-//         fptr2 = fopen(path, "w");
-//         if (fptr == NULL || fptr2 == NULL)
-//         {
-//             printf("Error in opening/creating files\n");
-//             return;
-//         }
-
-//         while ((ch = fgetc(fptr)) != EOF)
-//         {
-//             fputc(ch, fptr2);
-//         }
-//         printf("Your file has been created.\nPress 'm' to go back to the main menu.\n");
-//         fclose(fptr);
-//         fclose(fptr2);
-//         getch();
-//         char ch;
-//         while (ch=='m')
-//         {
-//             printf("Press 'm' to go back to the main menu.");
-//         }
-//         system("cls");
-//         Options();
-        
-//     }
-// }
-// void openfile(char path[], FILE *fptr)
-// {
-//     FILE *fptr2;
-//     char ch;
-//     char choice;
-//     strcat(path, ".txt");
-
-//         fptr2 = fopen(path, "r");
-//         if (fptr2 == NULL)
-//         {
-//             printf("Error in opening\n");
-//             return;
-//         }
-//         while ((ch = fgetc(fptr2)) != EOF)
-//         {
-//             printf("%c",ch);
-//         }
-
-// }
-void square_type(int size,char ch,int fill,int x,int y){
+    fptr2 = fopen(path, "r");
+    if (fptr2 == NULL)
+    {
+        printf("Error in opening\n");
+        return;
+    }
+    while ((ch = fgetc(fptr2)) != EOF)
+    {
+        printf("%c", ch);
+    }
+}
+void square_type(int size, char ch, int fill, int x, int y)
+{
     if (fill == 0)
     {
         hollow_square(size, ch, x, y);
     }
-    else if(fill == 1)
+    else if (fill == 1)
     {
         fill_square(size, ch, x, y);
-    }   
-}
-void triangle_type(int rows,int type, int fill, char shape, char ch, char side, int x, int y){
-
-    if (type==1)
-    {
-        right_triangles( rows,fill,shape, ch, side, x, y);
     }
-    else if (type==2)
-    {
-        comp_triangles( rows,fill,shape, ch, side, x, y);
-    }   
 }
-void parallelogram_type(int width,int fill, int hieght, char ch, int x, int y){
-    if (fill==1)
+void triangle_type(int rows, int type, int fill, char shape, char ch, char side, int x, int y)
+{
+
+    if (type == 1)
+    {
+        right_triangles(rows, fill, shape, ch, side, x, y);
+    }
+    else if (type == 2)
+    {
+        comp_triangles(rows, fill, shape, ch, side, x, y);
+    }
+}
+void parallelogram_type(int width, int fill, int hieght, char ch, int x, int y)
+{
+    if (fill == 1)
     {
         fill_parralelogram(hieght, width, ch, x, y);
     }
-    else if (fill==0)
+    else if (fill == 0)
     {
-       hollow_parralelogram(hieght, width,ch, x, y);
-    }   
+        hollow_parralelogram(hieght, width, ch, x, y);
+    }
 }
-void trapezium_type(int base1, int base2, int fill, char ch, int x, int y){
-    if (fill==1)
+void trapezium_type(int base1, int base2, int fill, char ch, int x, int y)
+{
+    if (fill == 1)
     {
         fill_trapezium(base1, base2, ch, x, y);
     }
-    else if (fill==0)
+    else if (fill == 0)
     {
-       hollow_trapezium(base1, base2, ch, x, y);
-    }   
-}
-void circle_type(int size,int fill, char ch, int x, int y){
-    if (fill==1)
-    {
-        fill_circle(size,  ch, x, y);
+        hollow_trapezium(base1, base2, ch, x, y);
     }
-    else if (fill==0)
+}
+void circle_type(int size, int fill, char ch, int x, int y)
+{
+    if (fill == 1)
     {
-       hollow_circle(size, ch, x, y);
-    }   
+        fill_circle(size, ch, x, y);
+    }
+    else if (fill == 0)
+    {
+        hollow_circle(size, ch, x, y);
+    }
 }
 
-void diamond_type(int size,int fill, char ch, int x, int y){
-    if (fill==1)
+void diamond_type(int size, int fill, char ch, int x, int y)
+{
+    if (fill == 1)
     {
-        fill_diamond(size,  ch, x, y);
+        fill_diamond(size, ch, x, y);
     }
-    else if (fill==0)
+    else if (fill == 0)
     {
-       hollow_diamond(size, ch, x, y);
-    }   
+        hollow_diamond(size, ch, x, y);
+    }
 }
-void star_type(int rows,int type, char ch, int x, int y){
-    if (type==0)
+void star_type(int rows, int type, char ch, int x, int y)
+{
+    if (type == 0)
     {
         four_sided_star(rows, ch, x, y);
     }
-    else if (type==1)
+    else if (type == 1)
     {
-       six_sided_star(rows,ch, x, y);
-    }   
+        six_sided_star(rows, ch, x, y);
+    }
 }
-
-
