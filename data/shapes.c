@@ -10,6 +10,7 @@ void fill_square(int size, char ch, int x, int y)
             fprintf(fptr, "%c", ch);
         }
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -34,6 +35,7 @@ void hollow_square(int size, char ch, int x, int y)
             }
 
             printf("\n");
+            
             fprintf(fptr, "\n");
             y++;
             gotoxy(x, y);
@@ -151,6 +153,7 @@ void right_triangles(int rows, int fill, char shape, char ch, char side, int x, 
             }
         }
         printf("\n");
+        
         fprintf(fptr, "\n");
         num--;
         y++;
@@ -179,6 +182,7 @@ void comp_triangles(int rows, int fill, char shape, char ch, char side, int x, i
                     fprintf(fptr, "%c", ch);
                 }
                 printf("\n");
+                
                 fprintf(fptr, "\n");
                 y++;
                 gotoxy(x, y);
@@ -208,6 +212,7 @@ void comp_triangles(int rows, int fill, char shape, char ch, char side, int x, i
                     }
                 }
                 printf("\n");
+                
                 fprintf(fptr, "\n");
                 y++;
                 gotoxy(x, y);
@@ -232,6 +237,7 @@ void comp_triangles(int rows, int fill, char shape, char ch, char side, int x, i
                     fprintf(fptr, "%c", ch);
                 }
                 printf("\n");
+                
                 fprintf(fptr, "\n");
                 y++;
                 gotoxy(x, y);
@@ -261,6 +267,7 @@ void comp_triangles(int rows, int fill, char shape, char ch, char side, int x, i
                     }
                 }
                 printf("\n");
+                
                 fprintf(fptr, "\n");
                 y++;
                 gotoxy(x, y);
@@ -285,6 +292,7 @@ void fill_parralelogram(int width, int hieght, char ch, int x, int y)
             fprintf(fptr, "%c", ch);
         }
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -313,6 +321,7 @@ void hollow_parralelogram(int width, int hieght, char ch, int x, int y)
             }
         }
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -340,6 +349,7 @@ void fill_trapezium(int base1, int base2, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -365,6 +375,7 @@ void hollow_trapezium(int base1, int base2, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -404,6 +415,7 @@ void heart(int size, char ch, int x, int y)
         }
         // New row
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -424,6 +436,7 @@ void heart(int size, char ch, int x, int y)
         }
         // New row
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -461,6 +474,7 @@ void fill_circle(int size, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -487,6 +501,7 @@ void hollow_circle(int size, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -513,6 +528,7 @@ void fill_diamond(int size, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -533,6 +549,7 @@ void fill_diamond(int size, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -558,6 +575,7 @@ void hollow_diamond(int size, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -587,6 +605,7 @@ void textbox(int width, int hieght, int x, int y)
             }
         }
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -627,6 +646,7 @@ void pentagon(int size, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -646,6 +666,7 @@ void pentagon(int size, char ch, int x, int y)
             fprintf(fptr, "  ");
         }
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -686,6 +707,7 @@ void hexagon(int size, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -705,6 +727,7 @@ void hexagon(int size, char ch, int x, int y)
             fprintf(fptr, "  ");
         }
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -741,6 +764,7 @@ void hexagon(int size, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -767,6 +791,7 @@ void four_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -795,6 +820,7 @@ void four_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -805,6 +831,7 @@ void four_sided_star(int rows, char ch, int x, int y)
         fprintf(fptr, " %c", ch);
     }
     printf("\n");
+    
     y++;
     gotoxy(x, y);
     for (int i = 0; i < rows / 2; i++)
@@ -836,6 +863,7 @@ void four_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -859,6 +887,7 @@ void four_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -889,6 +918,7 @@ void six_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -917,6 +947,7 @@ void six_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -927,6 +958,7 @@ void six_sided_star(int rows, char ch, int x, int y)
         fprintf(fptr, " %c", ch);
     }
     printf("\n");
+    
     fprintf(fptr, "\n");
     y++;
     gotoxy(x, y);
@@ -959,6 +991,7 @@ void six_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -987,6 +1020,7 @@ void six_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -997,6 +1031,7 @@ void six_sided_star(int rows, char ch, int x, int y)
         fprintf(fptr, " %c", ch);
     }
     printf("\n");
+    
     y++;
     gotoxy(x, y);
     fprintf(fptr, "\n");
@@ -1029,6 +1064,7 @@ void six_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -1052,6 +1088,7 @@ void six_sided_star(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -1087,6 +1124,7 @@ void kite(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -1114,6 +1152,7 @@ void kite(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -1141,6 +1180,7 @@ void kite(int rows, char ch, int x, int y)
         }
 
         printf("\n");
+        
         fprintf(fptr, "\n");
         y++;
         gotoxy(x, y);
@@ -1149,5 +1189,6 @@ void kite(int rows, char ch, int x, int y)
 void nextline()
 {
     printf("\n");
+    
     fprintf(fptr, "\n");
 }

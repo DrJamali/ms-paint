@@ -281,5 +281,28 @@ void star_type(int rows, int type, char ch, int x, int y)
     else if (type == 1)
     {
         six_sided_star(rows, ch, x, y);
-    }
+    }}
+void call_line(char ch, int size, int x, int y)
+{
+     line(ch, size, x, y);
+}
+void call_heart(int size, char ch, int x, int y)
+{
+    heart(size, ch, x, y);
+}
+void call_textbox(int width, int hieght, int x, int y)
+{
+    textbox(width, hieght, x, y);
+}
+void call_pentagon(int size, char ch, int x, int y)
+{
+        pentagon(size, ch, x, y);
+}
+void call_hexagon(int size, char ch, int x, int y)
+{
+        hexagon(size, ch, x, y);
+}
+void call_kite(int rows, char ch, int x, int y)
+{
+        kite(rows, ch, x, y);
 }

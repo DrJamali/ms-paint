@@ -392,7 +392,7 @@ void printline()
     }
     get_colour(colour);
 
-    line(ch, size, x, y);
+    call_line(ch, size, x, y);
 }
 void printsquare()
 {
@@ -509,7 +509,7 @@ void printtextbox()
     }
 
     get_colour(colour);
-    textbox(width, hieght, x, y);
+    call_textbox(width, hieght, x, y);
 }
 void printtrapezium()
 {
@@ -692,7 +692,7 @@ void printheart()
         gotoxy(x, y);
     }
     get_colour(colour);
-    heart(size, ch, x, y);
+    call_heart(size, ch, x, y);
 }
 void printpentagon()
 {
@@ -722,7 +722,7 @@ void printpentagon()
         gotoxy(x, y);
     }
     get_colour(colour);
-    pentagon(size, ch, x, y);
+    call_pentagon(size, ch, x, y);
 }
 void printhexagon()
 {
@@ -752,7 +752,7 @@ void printhexagon()
         gotoxy(x, y);
     }
     get_colour(colour);
-    hexagon(size, ch, x, y);
+    call_hexagon(size, ch, x, y);
 }
 void printstar()
 {
@@ -816,7 +816,7 @@ void printkite()
         gotoxy(x, y);
     }
     get_colour(colour);
-    kite(size, ch, x, y);
+    call_kite(size, ch, x, y);
 }
 void printalphabets()
 {
