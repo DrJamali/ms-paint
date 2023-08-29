@@ -1,4 +1,12 @@
 #include "..\interface\interface_header.h"
+void set_pos(char position,int *x,int *y){
+        while (position != 'p')
+    {
+        position = getch();
+        cordinates(&(*x), &(*y), position);
+        gotoxy(*x, *y);
+    }
+}
 void get_colour(char col)
 {
     if (col == 'r')
@@ -384,12 +392,8 @@ void printline()
     scanf(" %c", &colour);
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
 
     call_line(ch, size, x, y);
@@ -419,12 +423,8 @@ void printsquare()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
     square_type(size, ch, fill, x, y);
 }
@@ -472,12 +472,8 @@ void printtriangle()
 
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
     triangle_type(rows, type, fill, shape, ch, side, x, y);
 }
@@ -501,12 +497,8 @@ void printtextbox()
     scanf(" %c", &colour);
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
 
     get_colour(colour);
     call_textbox(width, hieght, x, y);
@@ -546,12 +538,8 @@ void printtrapezium()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
 
     trapezium_type(base1, base2, fill, ch, x, y);
@@ -586,12 +574,8 @@ void printparralelogram()
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
 
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
 
     get_colour(colour);
     parallelogram_type(hieght, width, fill, ch, x, y);
@@ -620,12 +604,8 @@ void printdiamond()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
     diamond_type(size, fill, ch, x, y);
 }
@@ -654,12 +634,8 @@ void printcircle()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
 
     circle_type(size, fill, ch, x, y);
@@ -685,12 +661,8 @@ void printheart()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+set_pos(position,&x,&y);
+//  gotoxy(x, y);
     get_colour(colour);
     call_heart(size, ch, x, y);
 }
@@ -715,12 +687,8 @@ void printpentagon()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
     call_pentagon(size, ch, x, y);
 }
@@ -745,12 +713,8 @@ void printhexagon()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
     call_hexagon(size, ch, x, y);
 }
@@ -780,12 +744,8 @@ void printstar()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
     star_type(size, type, ch, x, y);
 }
@@ -809,12 +769,8 @@ void printkite()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
     call_kite(size, ch, x, y);
 }
@@ -842,12 +798,8 @@ void printalphabets()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
 
     Alphabets(start, end, ch, x, y);
@@ -877,12 +829,8 @@ void printnumbers()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-    while (position != 'p')
-    {
-        position = getch();
-        cordinates(&x, &y, position);
-        gotoxy(x, y);
-    }
+  set_pos(position,&x,&y);
+
     get_colour(colour);
 
     numbers(start, end, ch, x, y);

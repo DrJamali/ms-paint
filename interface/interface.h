@@ -23,3 +23,4 @@ void printkite();
 void printalphabets();
 void printnumbers();
 void savefilemenu();
+void set_pos(char position,int *x,int *y);
