@@ -1,4 +1,5 @@
  void Interface();
+ void free_draw_instruction(int x, int y, int headinglength, int width, int hieght, int middle);
  void printStarLine(int length, int x, int y);
  void printHeading(int x, int y, char string[]);
  void Options();
@@ -24,3 +25,4 @@ void printalphabets();
 void printnumbers();
 void savefilemenu();
 void set_pos(char position,int *x,int *y);
+void Heading(int x, int y, int headinglength, int width, int hieght, int middle,char string[]);

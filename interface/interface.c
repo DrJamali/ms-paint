@@ -62,21 +62,38 @@ void printHeading(int x, int y, char string[])
     gotoxy(x, y);
     puts(string);
 }
-void free_draw_instruction(int x, int y, int headinglength, int width, int hieght, int middle)
-{
-
-    getConsoleSize(&width, &hieght);
+void Heading(int x, int y, int headinglength, int width, int hieght, int middle,char string[]){
+     getConsoleSize(&width, &hieght);
     x = 0;
     y = 0;
     printStarLine(width, x, y);
     y++;
-    char string[] = "Intructions";
+
     headinglength = strlen(string);
     middle = (width - headinglength) / 2;
     printHeading(middle, y, string);
     y++;
     printStarLine(width, x, y);
     y++;
+
+}
+void free_draw_instruction(int x, int y, int headinglength, int width, int hieght, int middle)
+{
+
+    // getConsoleSize(&width, &hieght);
+    // x = 0;
+    // y = 0;
+    // printStarLine(width, x, y);
+    // y++;
+    // char string[] = "Intructions";
+    // headinglength = strlen(string);
+    // middle = (width - headinglength) / 2;
+    // printHeading(middle, y, string);
+    // y++;
+    // printStarLine(width, x, y);
+    // y++;
+    char string[] = "Instructions";
+    Heading(x, y, headinglength, middle, width, middle,string);
     printf("Use the arrow button to move\n");
     printf("Use the Spacebar and  arrow button to print the white stars\n");
     printf("Use the r and  arrow button to print the red stars\n");
@@ -88,6 +105,7 @@ void free_draw_instruction(int x, int y, int headinglength, int width, int hiegh
     printf("\n");
     printf("Now press s start to start drwaing\n");
     printf("Press M to go to main menu\n");
+    // printspaces(5);
     char ch = getch();
     if (ch == 's')
     {
@@ -100,18 +118,20 @@ void free_draw_instruction(int x, int y, int headinglength, int width, int hiegh
 }
 void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middle, char ch)
 {
-    getConsoleSize(&width, &hieght);
-    x = 0;
-    y = 0;
-    printStarLine(width, x, y);
-    y++;
-    char string[] = "Welcome to Shape Mene";
-    headinglength = strlen(string);
-    middle = (width - headinglength) / 2;
-    printHeading(middle, y, string);
-    y++;
-    printStarLine(width, x, y);
-    y++;
+    // getConsoleSize(&width, &hieght);
+    // x = 0;
+    // y = 0;
+    // printStarLine(width, x, y);
+    // y++;
+    // char string[] = "Welcome to Shape Mene";
+    // headinglength = strlen(string);
+    // middle = (width - headinglength) / 2;
+    // printHeading(middle, y, string);
+    // y++;
+    // printStarLine(width, x, y);
+    // y++;
+        char string[] = "Shape Menu";
+    Heading(x, y, headinglength, middle, width, middle,string);
     printf("-> Press a to make line\n");
     printf("-> Press b to make square\n");
     printf("-> Press c to make textbox\n");
@@ -131,7 +151,8 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
     printf("-> Press Enter to go to next line\n");
     printf("->Press backspace to return to main menu\n");
     printf("-> Press q to quit\n");
-    y = 21;
+    y = 23;
+    getConsoleSize(&width,&hieght);
     printStarLine(width, x, y);
     y++;
     char string2[] = "Start Drawing from here";
@@ -232,18 +253,20 @@ void Options()
     int x;
     int y;
     int middle;
-    getConsoleSize(&width, &hieght);
-    x = 0;
-    y = 0;
-    printStarLine(width, x, y);
-    y++;
-    char string[] = "Main Menu";
-    headinglength = strlen(string);
-    middle = (width - headinglength) / 2;
-    printHeading(middle, y, string);
-    y++;
-    printStarLine(width, x, y);
-    y++;
+    // getConsoleSize(&width, &hieght);
+    // x = 0;
+    // y = 0;
+    // printStarLine(width, x, y);
+    // y++;
+    // char string[] = "Main Menu";
+    // headinglength = strlen(string);
+    // middle = (width - headinglength) / 2;
+    // printHeading(middle, y, string);
+    // y++;
+    // printStarLine(width, x, y);
+    // y++;
+      char string[] = "Main Menu";
+    Heading(x, y, headinglength, middle, width, middle,string);
     printf("-> Press 1 to make shapes\n");
     printf("-> Press 2 to draw on terminal\n");
     printf("-> Press 3 to Save the file\n");
@@ -281,27 +304,31 @@ void Options()
 }
 void MainPage(int x, int y, int headinglength, int width, int hieght, int middle)
 {
-    getConsoleSize(&width, &hieght);
-    x = 0;
-    y = 0;
-    printStarLine(width, x, y);
-    y++;
-    char string[10000] = "Welcome To MS Paint";
-    headinglength = strlen(string);
-    middle = (width - headinglength) / 2;
-    printHeading(middle, y, string);
-    y++;
-    printStarLine(width, x, y);
+    // getConsoleSize(&width, &hieght);
+    // x = 0;
+    // y = 0;
+    // printStarLine(width, x, y);
+    // y++;
+    // char string[10000] = "Welcome To MS Paint";
+    // headinglength = strlen(string);
+    // middle = (width - headinglength) / 2;
+    // printHeading(middle, y, string);
+    // y++;
+    // printStarLine(width, x, y);
+      char string[] = "Welcome To MS Paint";
+    Heading(x, y, headinglength, middle, width, middle,string);
+    getConsoleSize(&width,&hieght);
     y = (hieght / 2) - 1;
-    strcpy(string, "You can go to full screen and press r to refresh");
-    headinglength = strlen(string);
+    // gotoxy(x,y);
+    char string2[]= "You can also go to full screen and Press r to Refresh";
+    headinglength = strlen(string2);
     middle = (width - headinglength) / 2;
-    printHeading(middle, y, string);
+    printHeading(middle, y, string2);
     y++;
-    strcpy(string, "Press Enter to start");
-    headinglength = strlen(string);
+    strcpy(string2, "Press Enter to start");
+    headinglength = strlen(string2);
     middle = (width - headinglength) / 2;
-    printHeading(middle, y, string);
+    printHeading(middle, y, string2);
 }
 void Interface()
 {
@@ -336,8 +363,9 @@ void Interface()
 }
 void free_drawing(int x, int y, int headinglength, int width, int hieght, int middle)
 {
+    x=0;
+    y = 15;
     getConsoleSize(&width, &hieght);
-    y = 16;
     printStarLine(width, x, y);
     y++;
     char string2[] = "Start Drawing from here";
