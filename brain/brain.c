@@ -89,26 +89,7 @@ void numbers(int start, int end, char ch, int x, int y)
         // Print a new line after each character is printed
     }
 }
-void viewfile()
-{
-    printf("\n");
-    whitecolour();
-    char dir_add[100];
-    char ch;
-    printf("\n");
-    printf("Enter the folder absoloute path you want to open: ");
-    gets(dir_add);
-    opendirectory(dir_add);
-    printf("\n");
-    printf("Enter the folder absolute path with the file name you want to save: ");
 
-    char folder_add[100];
-    gets(folder_add);
-    openfile(folder_add, fptr);
-    printf("Press any key to exit");
-    ch = getch();
-    exit(1);
-}
 void opendirectory(char str[])
 {
     DIR *directory;
@@ -186,7 +167,7 @@ void savefile(char path[], FILE *fptr)
         }
     }
 }
-void openfile(char path[], FILE *fptr)
+void open_file(char path[])
 {
     FILE *fptr2;
     char ch;
@@ -303,6 +284,13 @@ void call_hexagon(int size, char ch, int x, int y)
         hexagon(size, ch, x, y);
 }
 void call_kite(int rows, char ch, int x, int y)
+
 {
         kite(rows, ch, x, y);
+}
+void editing(char path[])
+{
+    open_file(path);
+    fptr = NULL;
+    fptr = fopen(path,"a");
 }

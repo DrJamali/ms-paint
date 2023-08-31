@@ -1,6 +1,7 @@
 #include "..\interface\interface_header.h"
-void set_pos(char position,int *x,int *y){
-        while (position != 'p')
+void set_pos(char position, int *x, int *y)
+{
+    while (position != 'p')
     {
         position = getch();
         cordinates(&(*x), &(*y), position);
@@ -62,8 +63,9 @@ void printHeading(int x, int y, char string[])
     gotoxy(x, y);
     puts(string);
 }
-void Heading(int x, int y, int headinglength, int width, int hieght, int middle,char string[]){
-     getConsoleSize(&width, &hieght);
+void Heading(int x, int y, int headinglength, int width, int hieght, int middle, char string[])
+{
+    getConsoleSize(&width, &hieght);
     x = 0;
     y = 0;
     printStarLine(width, x, y);
@@ -75,7 +77,6 @@ void Heading(int x, int y, int headinglength, int width, int hieght, int middle,
     y++;
     printStarLine(width, x, y);
     y++;
-
 }
 void free_draw_instruction(int x, int y, int headinglength, int width, int hieght, int middle)
 {
@@ -93,7 +94,7 @@ void free_draw_instruction(int x, int y, int headinglength, int width, int hiegh
     // printStarLine(width, x, y);
     // y++;
     char string[] = "Instructions";
-    Heading(x, y, headinglength, middle, width, middle,string);
+    Heading(x, y, headinglength, middle, width, middle, string);
     printf("Use the arrow button to move\n");
     printf("Use the Spacebar and  arrow button to print the white stars\n");
     printf("Use the r and  arrow button to print the red stars\n");
@@ -130,8 +131,8 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
     // y++;
     // printStarLine(width, x, y);
     // y++;
-        char string[] = "Shape Menu";
-    Heading(x, y, headinglength, middle, width, middle,string);
+    char string[] = "Shape Menu";
+    Heading(x, y, headinglength, middle, width, middle, string);
     printf("-> Press a to make line\n");
     printf("-> Press b to make square\n");
     printf("-> Press c to make textbox\n");
@@ -152,7 +153,7 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
     printf("->Press backspace to return to main menu\n");
     printf("-> Press q to quit\n");
     y = 23;
-    getConsoleSize(&width,&hieght);
+    getConsoleSize(&width, &hieght);
     printStarLine(width, x, y);
     y++;
     char string2[] = "Start Drawing from here";
@@ -265,8 +266,8 @@ void Options()
     // y++;
     // printStarLine(width, x, y);
     // y++;
-      char string[] = "Main Menu";
-    Heading(x, y, headinglength, middle, width, middle,string);
+    char string[] = "Main Menu";
+    Heading(x, y, headinglength, middle, width, middle, string);
     printf("-> Press 1 to make shapes\n");
     printf("-> Press 2 to draw on terminal\n");
     printf("-> Press 3 to Save the file\n");
@@ -293,6 +294,10 @@ void Options()
     {
         viewfile();
     }
+    else if (ch == 53)
+    {
+        edit_file();
+    }
     else if (ch == 'q' || ch == 'Q')
     {
         system("cls");
@@ -301,6 +306,12 @@ void Options()
         sleep(8);
         exit(1);
     }
+    else
+    {
+        cordinates(&x, &y, ch);
+            gotoxy(x, y);
+    }
+    
 }
 void MainPage(int x, int y, int headinglength, int width, int hieght, int middle)
 {
@@ -315,12 +326,12 @@ void MainPage(int x, int y, int headinglength, int width, int hieght, int middle
     // printHeading(middle, y, string);
     // y++;
     // printStarLine(width, x, y);
-      char string[] = "Welcome To MS Paint";
-    Heading(x, y, headinglength, middle, width, middle,string);
-    getConsoleSize(&width,&hieght);
+    char string[] = "Welcome To MS Paint";
+    Heading(x, y, headinglength, middle, width, middle, string);
+    getConsoleSize(&width, &hieght);
     y = (hieght / 2) - 1;
     // gotoxy(x,y);
-    char string2[]= "You can also go to full screen and Press r to Refresh";
+    char string2[] = "You can also go to full screen and Press r to Refresh";
     headinglength = strlen(string2);
     middle = (width - headinglength) / 2;
     printHeading(middle, y, string2);
@@ -363,7 +374,7 @@ void Interface()
 }
 void free_drawing(int x, int y, int headinglength, int width, int hieght, int middle)
 {
-    x=0;
+    x = 0;
     y = 15;
     getConsoleSize(&width, &hieght);
     printStarLine(width, x, y);
@@ -420,7 +431,7 @@ void printline()
     scanf(" %c", &colour);
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
 
@@ -451,7 +462,7 @@ void printsquare()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
     square_type(size, ch, fill, x, y);
@@ -500,7 +511,7 @@ void printtriangle()
 
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
     triangle_type(rows, type, fill, shape, ch, side, x, y);
@@ -525,8 +536,7 @@ void printtextbox()
     scanf(" %c", &colour);
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
-
+    set_pos(position, &x, &y);
 
     get_colour(colour);
     call_textbox(width, hieght, x, y);
@@ -566,7 +576,7 @@ void printtrapezium()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
 
@@ -602,8 +612,7 @@ void printparralelogram()
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
 
     char position;
-  set_pos(position,&x,&y);
-
+    set_pos(position, &x, &y);
 
     get_colour(colour);
     parallelogram_type(hieght, width, fill, ch, x, y);
@@ -632,7 +641,7 @@ void printdiamond()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
     diamond_type(size, fill, ch, x, y);
@@ -662,7 +671,7 @@ void printcircle()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
 
@@ -689,8 +698,8 @@ void printheart()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-set_pos(position,&x,&y);
-//  gotoxy(x, y);
+    set_pos(position, &x, &y);
+    //  gotoxy(x, y);
     get_colour(colour);
     call_heart(size, ch, x, y);
 }
@@ -715,7 +724,7 @@ void printpentagon()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
     call_pentagon(size, ch, x, y);
@@ -741,7 +750,7 @@ void printhexagon()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
     call_hexagon(size, ch, x, y);
@@ -772,7 +781,7 @@ void printstar()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
     star_type(size, type, ch, x, y);
@@ -797,7 +806,7 @@ void printkite()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
     call_kite(size, ch, x, y);
@@ -826,7 +835,7 @@ void printalphabets()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
 
@@ -857,13 +866,14 @@ void printnumbers()
     y = y + 6;
     printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
     char position;
-  set_pos(position,&x,&y);
+    set_pos(position, &x, &y);
 
     get_colour(colour);
 
     numbers(start, end, ch, x, y);
 }
 void savefilemenu()
+
 {
     printf("\n");
     whitecolour();
@@ -879,4 +889,45 @@ void savefilemenu()
     char folder_add[100];
     gets(folder_add);
     savefile(folder_add, fptr);
+}
+void viewfile()
+{
+    printf("\n");
+    whitecolour();
+    char dir_add[100];
+    char ch;
+    printf("\n");
+    printf("Enter the folder absoloute path you want to open: ");
+    gets(dir_add);
+    opendirectory(dir_add);
+    printf("\n");
+    printf("Enter the folder absolute path with the file name you want to save: ");
+
+    char folder_add[100];
+    gets(folder_add);
+    open_file(folder_add);
+    printf("Press any key to exit");
+    ch = getch();
+    exit(1);
+}
+void edit_file()
+{
+    printf("\n");
+    whitecolour();
+    char dir_add[100];
+    char ch;
+    printf("\n");
+    printf("Enter the folder absoloute path you want to open: ");
+    gets(dir_add);
+    opendirectory(dir_add);
+    printf("\n");
+    printf("Enter the folder absolute path with the file name you want to edit: ");
+
+    char folder_add[100];
+    gets(folder_add);
+    gotoxy(0, 60);
+    editing(folder_add);
+    gotoxy(0,0);
+    printspaces(59);
+    Options();
 }

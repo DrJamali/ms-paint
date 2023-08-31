@@ -26,3 +26,5 @@ void printnumbers();
 void savefilemenu();
 void set_pos(char position,int *x,int *y);
 void Heading(int x, int y, int headinglength, int width, int hieght, int middle,char string[]);
+void viewfile();
+void edit_file();
