@@ -92,12 +92,40 @@ void get_shape(char name[], int size, int x, int y, char col, char ch, int fill,
     else if ((strcmp(name, "Triangle") == 0))
     {
         triangle_type(size, type, fill, shape, ch, side, x, y);
-        printf("size :%d \n", size);
-        printf("type :%d \n", type);
-        printf("fill :%d \n", fill);
-        printf("shape :%d \n", shape);
-        printf("char :%d \n", ch);
     }
+        else if ((strcmp(name, "Triangle") == 0))
+    {
+        triangle_type(size, type, fill, shape, ch, side, x, y);
+    }
+        else if ((strcmp(name, "Triangle") == 0))
+    {
+        triangle_type(size, type, fill, shape, ch, side, x, y);
+    }
+        else if ((strcmp(name, "Triangle") == 0))
+    {
+        triangle_type(size, type, fill, shape, ch, side, x, y);
+    }
+        else if ((strcmp(name, "Triangle") == 0))
+    {
+        triangle_type(size, type, fill, shape, ch, side, x, y);
+    }
+        else if ((strcmp(name, "Triangle") == 0))
+    {
+        triangle_type(size, type, fill, shape, ch, side, x, y);
+    }
+        else if ((strcmp(name, "Triangle") == 0))
+    {
+        triangle_type(size, type, fill, shape, ch, side, x, y);
+    }
+        else if ((strcmp(name, "Triangle") == 0))
+    {
+        triangle_type(size, type, fill, shape, ch, side, x, y);
+    }
+        else if ((strcmp(name, "Triangle") == 0))
+    {
+        triangle_type(size, type, fill, shape, ch, side, x, y);
+    }
+    
     else{
         printf("noting relative found");
     }
@@ -242,8 +270,8 @@ void open_file(char path[])
         fscanf(fptr2, " %c", &col);
         fscanf(fptr2, " %d", &fill);
         fscanf(fptr2, " %d", &type);
-        fscanf(fptr2, " %c", &shape);
         fscanf(fptr2, " %c", &side);
+        fscanf(fptr2, " %c", &shape);
         fscanf(fptr2, " %d", &width);
         fscanf(fptr2, " %d", &hieght);
         end = fgetc(fptr2);
@@ -267,12 +295,10 @@ void triangle_type(int rows, int type, int fill, char shape, char ch, char side,
 
     if (type == 1)
     {
-        printf("In trangle type");
         right_triangles(rows, fill, shape, ch, side, x, y);
     }
     else if (type == 2)
     {
-        printf("In trangle type");
         comp_triangles(rows, fill, shape, ch, side, x, y);
     }
 }

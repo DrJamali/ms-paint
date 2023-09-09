@@ -492,6 +492,11 @@ void printtriangle()
         y++;
         scanf(" %c", &triangle[i].side);
     }
+    else
+    {
+        triangle[i].side = '~';
+    }
+    
     printf("Enter any character to print: ");
     y++;
     scanf(" %c", &triangle[i].ch);
