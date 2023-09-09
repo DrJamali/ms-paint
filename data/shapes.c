@@ -7,11 +7,9 @@ void fill_square(int size, char ch, int x, int y)
         for (int j = 0; j < size; j++)
         {
             printf("%c", ch);
-            fprintf(fptr, "%c", ch);
         }
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -26,17 +24,14 @@ void hollow_square(int size, char ch, int x, int y)
             if (i == 0 || j == 0 || i == size - 1 || j == size - 1)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                fprintf(fptr, " ");
             }
 
             printf("\n");
-            
-            fprintf(fptr, "\n");
+
             y++;
             gotoxy(x, y);
         }
@@ -62,19 +57,16 @@ void right_triangles(int rows, int fill, char shape, char ch, char side, int x, 
                 {
 
                     printf("%c", ch);
-                    fprintf(fptr, "%c", ch);
                 }
                 else
                 {
                     printf(" ");
-                    fprintf(fptr, " ");
                 }
             }
             else
             {
 
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
         }
         for (int j = 0;
@@ -88,12 +80,10 @@ void right_triangles(int rows, int fill, char shape, char ch, char side, int x, 
                 {
 
                     printf(" ");
-                    fprintf(fptr, " ");
                 }
                 else
                 {
                     printf("%c", ch);
-                    fprintf(fptr, "%c", ch);
                 }
             }
             else
@@ -102,12 +92,10 @@ void right_triangles(int rows, int fill, char shape, char ch, char side, int x, 
                 {
 
                     printf("%c", ch);
-                    fprintf(fptr, "%c", ch);
                 }
                 else
                 {
                     printf(" ");
-                    fprintf(fptr, " ");
                 }
             }
         }
@@ -121,12 +109,10 @@ void right_triangles(int rows, int fill, char shape, char ch, char side, int x, 
                 {
 
                     printf(" ");
-                    fprintf(fptr, " ");
                 }
                 else
                 {
                     printf("%c", ch);
-                    fprintf(fptr, "%c", ch);
                 }
             }
             else
@@ -134,7 +120,6 @@ void right_triangles(int rows, int fill, char shape, char ch, char side, int x, 
                 if (2 * i > i + j)
                 {
                     printf(" ");
-                    fprintf(fptr, " ");
                 }
                 else
                 {
@@ -142,19 +127,16 @@ void right_triangles(int rows, int fill, char shape, char ch, char side, int x, 
                     {
 
                         printf("%c", ch);
-                        fprintf(fptr, "%c", ch);
                     }
                     else
                     {
                         printf(" ");
-                        fprintf(fptr, " ");
                     }
                 }
             }
         }
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         num--;
         y++;
         gotoxy(x, y);
@@ -174,16 +156,13 @@ void comp_triangles(int rows, int fill, char shape, char ch, char side, int x, i
                 for (int j = i; j < rows; j++)
                 {
                     printf(" ");
-                    fprintf(fptr, " ");
                 }
                 for (int j = 0; j < (2 * i) + 1; j++)
                 {
                     printf("%c", ch);
-                    fprintf(fptr, "%c", ch);
                 }
                 printf("\n");
-                
-                fprintf(fptr, "\n");
+
                 y++;
                 gotoxy(x, y);
             }
@@ -196,24 +175,20 @@ void comp_triangles(int rows, int fill, char shape, char ch, char side, int x, i
                 for (int j = i; j < rows; j++)
                 {
                     printf(" ");
-                    fprintf(fptr, " ");
                 }
                 for (int j = 0; j < (2 * i) + 1; j++)
                 {
                     if (j == 0 || i == 0 || i == rows - 1 || j == 2 * i)
                     {
                         printf("%c", ch);
-                        fprintf(fptr, "%c", ch);
                     }
                     else
                     {
                         printf(" ");
-                        fprintf(fptr, " ");
                     }
                 }
                 printf("\n");
-                
-                fprintf(fptr, "\n");
+
                 y++;
                 gotoxy(x, y);
             }
@@ -229,16 +204,13 @@ void comp_triangles(int rows, int fill, char shape, char ch, char side, int x, i
                 for (int j = 0; j < i + 1; j++)
                 {
                     printf(" ");
-                    fprintf(fptr, " ");
                 }
                 for (int j = 2 * i; j < 2 * rows - 1; j++)
                 {
                     printf("%c", ch);
-                    fprintf(fptr, "%c", ch);
                 }
                 printf("\n");
-                
-                fprintf(fptr, "\n");
+
                 y++;
                 gotoxy(x, y);
             }
@@ -251,24 +223,20 @@ void comp_triangles(int rows, int fill, char shape, char ch, char side, int x, i
                 for (int j = 0; j < i + 1; j++)
                 {
                     printf(" ");
-                    fprintf(fptr, " ");
                 }
                 for (int j = 2 * i; j < 2 * rows - 1; j++)
                 {
                     if (i == 0 || j == 2 * i || i == rows - 1 || j == 2 * rows - 2)
                     {
                         printf("%c", ch);
-                        fprintf(fptr, "%c", ch);
                     }
                     else
                     {
                         printf(" ");
-                        fprintf(fptr, " ");
                     }
                 }
                 printf("\n");
-                
-                fprintf(fptr, "\n");
+
                 y++;
                 gotoxy(x, y);
             }
@@ -284,16 +252,13 @@ void fill_parralelogram(int width, int hieght, char ch, int x, int y)
         for (int j = i; j < hieght; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = 0; j < width; j++)
         {
             printf("%c", ch);
-            fprintf(fptr, "%c", ch);
         }
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -305,24 +270,20 @@ void hollow_parralelogram(int width, int hieght, char ch, int x, int y)
         for (int j = i; j < hieght; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = 0; j < width; j++)
         {
             if (j == 0 || j == width - 1 || i == 0 || i == hieght - 1)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -339,18 +300,15 @@ void fill_trapezium(int base1, int base2, char ch, int x, int y)
             if (j > ((base2 - base1) / 2) - i && j <= base1 + ((base2 - base1) / 2) + i)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                fprintf(fptr, " ");
             }
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -365,18 +323,15 @@ void hollow_trapezium(int base1, int base2, char ch, int x, int y)
             if ((i == 0 && ((j > ((base2 - base1) / 2)) && j <= base1 + ((base2 - base1) / 2))) || i == ((base2 - base1) / 2) || j == (((base2 - base1) / 2) - i) + 1 || j == base1 + ((base2 - base1) / 2) + i)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
             {
                 printf(" ");
-                fprintf(fptr, " ");
             }
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -393,30 +348,25 @@ void heart(int size, char ch, int x, int y)
         for (j = 1; j < size - i; j += 2)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         // Printing stars for the left hill
         for (j = 1; j <= i; j++)
         {
             printf("%c", ch);
-            fprintf(fptr, "%c", ch);
         }
         // Printing spaces
         for (j = 1; j <= size - i; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         // Printing stars for the right hill
         for (j = 1; j <= i; j++)
         {
             printf("%c", ch);
-            fprintf(fptr, "%c", ch);
         }
         // New row
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -427,17 +377,14 @@ void heart(int size, char ch, int x, int y)
         for (j = i; j < size; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (j = 1; j <= (i * 2) - 1; j++)
         {
             printf("%c", ch);
-            fprintf(fptr, "%c", ch);
         }
         // New row
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -447,7 +394,6 @@ void line(char ch, int size, int x, int y)
     for (int i = 0; i < size; i++)
     {
         printf("%c", ch);
-        fprintf(fptr, "%c", ch);
     }
 }
 void fill_circle(int size, char ch, int x, int y)
@@ -466,16 +412,13 @@ void fill_circle(int size, char ch, int x, int y)
             if (distance == size)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
                 printf(" ");
-            fprintf(fptr, " ");
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -493,16 +436,13 @@ void hollow_circle(int size, char ch, int x, int y)
             if (distance <= size)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
                 printf(" ");
-            fprintf(fptr, " ");
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -517,19 +457,16 @@ void fill_diamond(int size, char ch, int x, int y)
         for (int j = i; j < size; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         // for the uper empty triangle of diammond
         for (int j = 0; j <= 2 * i; j++)
         {
 
             printf("%c", ch);
-            fprintf(fptr, "%c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -539,18 +476,15 @@ void fill_diamond(int size, char ch, int x, int y)
         for (int j = 0; j <= i; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = 2 * i; j < 2 * size - 1; j++)
         {
 
             printf("%c", ch);
-            fprintf(fptr, "%c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -564,19 +498,16 @@ void hollow_diamond(int size, char ch, int x, int y)
         for (int j = i; j < size; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         // for the uper empty triangle of diammond
         for (int j = 0; j <= 2 * i; j++)
         {
 
             printf("%c", ch);
-            fprintf(fptr, "%c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -601,12 +532,10 @@ void textbox(int width, int hieght, int x, int y)
             else
             {
                 printf(" ");
-                fprintf(fptr, " ");
             }
         }
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -620,34 +549,28 @@ void pentagon(int size, char ch, int x, int y)
         for (int j = i; j <= size; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = 1; j < i; j++)
         {
             if (j == 1)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
                 printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = 1; j <= i; j++)
         {
             if (j == i)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
                 printf(" ");
-            fprintf(fptr, " ");
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -659,15 +582,12 @@ void pentagon(int size, char ch, int x, int y)
             if (j == 1 || i == size || j == size)
             {
                 printf(" %c", ch);
-                fprintf(fptr, " %c", ch);
             }
             else
                 printf("  ");
-            fprintf(fptr, "  ");
         }
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -681,34 +601,28 @@ void hexagon(int size, char ch, int x, int y)
         for (int j = i; j <= size; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = 1; j < i; j++)
         {
             if (j == 1)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
                 printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = 1; j <= i; j++)
         {
             if (j == i)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
                 printf(" ");
-            fprintf(fptr, " ");
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -720,15 +634,12 @@ void hexagon(int size, char ch, int x, int y)
             if (j == 1 || j == size)
             {
                 printf(" %c", ch);
-                fprintf(fptr, " %c", ch);
             }
             else
                 printf("  ");
-            fprintf(fptr, "  ");
         }
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -738,34 +649,28 @@ void hexagon(int size, char ch, int x, int y)
         for (int j = 1; j <= i; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = i; j < size; j++)
         {
             if (j == i)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
                 printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = i; j <= size; j++)
         {
             if (j == size)
             {
                 printf("%c", ch);
-                fprintf(fptr, "%c", ch);
             }
             else
                 printf(" ");
-            fprintf(fptr, " ");
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -777,22 +682,18 @@ void four_sided_star(int rows, char ch, int x, int y)
         for (int j = 0; j < rows; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = i; j < rows; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = 0; j < i; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -801,37 +702,31 @@ void four_sided_star(int rows, char ch, int x, int y)
         for (int j = 2 * i; j < rows - 1; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = 0; j <= i * 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 0; j < rows; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 0; j <= i * 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
     for (int i = 0; i < rows * 3; i++)
     {
         printf(" %c", ch);
-        fprintf(fptr, " %c", ch);
     }
     printf("\n");
-    
+
     y++;
     gotoxy(x, y);
     for (int i = 0; i < rows / 2; i++)
@@ -839,32 +734,26 @@ void four_sided_star(int rows, char ch, int x, int y)
         for (int j = 0; j < i * 2 + 1; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = i; j < rows / 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = i; j < rows / 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 0; j < rows - 1; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 2 * i; j < rows - 1; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -873,22 +762,18 @@ void four_sided_star(int rows, char ch, int x, int y)
         for (int j = 0; j < rows; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = 0; j <= i; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = i; j < rows - 1; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -897,29 +782,24 @@ void six_sided_star(int rows, char ch, int x, int y)
 {
 
     printf(" %c", ch);
-    fprintf(fptr, " %c", ch);
 
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < rows; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = i; j < rows; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = 0; j < i; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -928,38 +808,31 @@ void six_sided_star(int rows, char ch, int x, int y)
         for (int j = 2 * i; j < rows - 1; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = 0; j <= i * 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 0; j < rows; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 0; j <= i * 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
     for (int i = 0; i < rows * 3; i++)
     {
         printf(" %c", ch);
-        fprintf(fptr, " %c", ch);
     }
     printf("\n");
-    
-    fprintf(fptr, "\n");
+
     y++;
     gotoxy(x, y);
     for (int i = 0; i < rows / 2 - 1; i++)
@@ -967,32 +840,26 @@ void six_sided_star(int rows, char ch, int x, int y)
         for (int j = 0; j < i * 2 + 1; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = i; j < rows / 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = i; j < rows / 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 0; j < rows - 1; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 2 * i; j < rows - 1; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -1001,71 +868,59 @@ void six_sided_star(int rows, char ch, int x, int y)
         for (int j = 2 * i; j < rows - 1; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = 0; j <= i * 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 0; j < rows; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 0; j <= i * 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
     for (int i = 0; i < rows * 3; i++)
     {
         printf(" %c", ch);
-        fprintf(fptr, " %c", ch);
     }
     printf("\n");
-    
+
     y++;
     gotoxy(x, y);
-    fprintf(fptr, "\n");
+
     for (int i = 0; i < rows / 2; i++)
     {
         for (int j = 0; j < i * 2 + 1; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = i; j < rows / 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = i; j < rows / 2; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 0; j < rows - 1; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
         for (int j = 2 * i; j < rows - 1; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -1074,22 +929,18 @@ void six_sided_star(int rows, char ch, int x, int y)
         for (int j = 0; j < rows; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = 0; j <= i; j++)
         {
             printf(" ");
-            fprintf(fptr, " ");
         }
         for (int j = i; j < rows - 1; j++)
         {
             printf(" %c", ch);
-            fprintf(fptr, " %c", ch);
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -1105,7 +956,6 @@ void kite(int rows, char ch, int x, int y)
         for (int j = i; j < rows; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         // for the uper empty triangle of diammond
         for (int j = 0; j <= 2 * i; j++)
@@ -1113,19 +963,16 @@ void kite(int rows, char ch, int x, int y)
             if (i == 0 || j == i || j == 0 || j == 2 * i)
             {
                 printf(" %c", ch);
-                fprintf(fptr, " %c", ch);
             }
 
             else
             {
                 printf("  ");
-                fprintf(fptr, "  ");
             }
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -1135,25 +982,21 @@ void kite(int rows, char ch, int x, int y)
         for (int j = 0; j <= i; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = 2 * i; j < 2 * rows - 1; j++)
         {
             if (i == 0 || j == 2 * rows - 2 || j == 2 * i || j == rows + i - 1)
             {
                 printf(" %c", ch);
-                fprintf(fptr, " %c", ch);
             }
             else
             {
                 printf("  ");
-                fprintf(fptr, "  ");
             }
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -1163,25 +1006,21 @@ void kite(int rows, char ch, int x, int y)
         for (int j = i; j < rows; j++)
         {
             printf("  ");
-            fprintf(fptr, "  ");
         }
         for (int j = 0; j <= 2 * i; j++)
         {
             if (i == 1 && j == 1)
             {
                 printf("  ");
-                fprintf(fptr, "  ");
             }
             else
             {
                 printf(" %c", ch);
-                fprintf(fptr, " %c", ch);
             }
         }
 
         printf("\n");
-        
-        fprintf(fptr, "\n");
+
         y++;
         gotoxy(x, y);
     }
@@ -1189,6 +1028,4 @@ void kite(int rows, char ch, int x, int y)
 void nextline()
 {
     printf("\n");
-    
-    fprintf(fptr, "\n");
 }

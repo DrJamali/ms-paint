@@ -1,4 +1,32 @@
 #include "./brain_header.h"
+
+void get_colour(char col)
+{
+    if (col == 'r')
+    {
+        redcolour();
+    }
+    else if (col == 'b')
+    {
+        bluecolour();
+    }
+    else if (col == 'y')
+    {
+        yellowcolour();
+    }
+    else if (col == 'g')
+    {
+        greencolour();
+    }
+    else if (col == 'w')
+    {
+        whitecolour();
+    }
+    else
+    {
+        printf("invalid colour");
+    }
+}
 void free_draw_input(int x, int y, int headinglength, int width, int hieght, int middle, int ch)
 {
     if (ch == 'r')
@@ -53,6 +81,28 @@ void free_draw_input(int x, int y, int headinglength, int width, int hieght, int
         printf(" ");
     }
 }
+void get_shape(char name[], int size, int x, int y, char col, char ch, int fill, int type, char side, char shape, int width, int hieght)
+{
+    gotoxy(x, y);
+    get_colour(col);
+    if ((strcmp(name, "Line") == 0))
+    {
+        call_line(ch, size, x, y);
+    }
+    else if ((strcmp(name, "Triangle") == 0))
+    {
+        triangle_type(size, type, fill, shape, ch, side, x, y);
+        printf("size :%d \n", size);
+        printf("type :%d \n", type);
+        printf("fill :%d \n", fill);
+        printf("shape :%d \n", shape);
+        printf("char :%d \n", ch);
+    }
+    else{
+        printf("noting relative found");
+    }
+}
+
 void Alphabets(int start, int end, char ch, int x, int y)
 {
     int start1 = start - 65;
@@ -170,7 +220,6 @@ void savefile(char path[], FILE *fptr)
 void open_file(char path[])
 {
     FILE *fptr2;
-    char ch;
     char choice;
     strcat(path, ".txt");
 
@@ -180,9 +229,26 @@ void open_file(char path[])
         printf("Error in opening\n");
         return;
     }
-    while ((ch = fgetc(fptr2)) != EOF)
+
+    int x, y, size, fill, type, end, width, hieght;
+    char ch, col, name[100], shape, side;
+    while (end != EOF)
     {
-        printf("%c", ch);
+        fscanf(fptr2, " %s", &name);
+        fscanf(fptr2, " %d", &x);
+        fscanf(fptr2, " %d", &y);
+        fscanf(fptr2, " %d", &size);
+        fscanf(fptr2, " %c", &ch);
+        fscanf(fptr2, " %c", &col);
+        fscanf(fptr2, " %d", &fill);
+        fscanf(fptr2, " %d", &type);
+        fscanf(fptr2, " %c", &shape);
+        fscanf(fptr2, " %c", &side);
+        fscanf(fptr2, " %d", &width);
+        fscanf(fptr2, " %d", &hieght);
+        end = fgetc(fptr2);
+        get_shape(name, size, x, y, col, ch, fill, type, shape, side, width, hieght);
+        
     }
 }
 void square_type(int size, char ch, int fill, int x, int y)
@@ -201,10 +267,12 @@ void triangle_type(int rows, int type, int fill, char shape, char ch, char side,
 
     if (type == 1)
     {
+        printf("In trangle type");
         right_triangles(rows, fill, shape, ch, side, x, y);
     }
     else if (type == 2)
     {
+        printf("In trangle type");
         comp_triangles(rows, fill, shape, ch, side, x, y);
     }
 }
@@ -262,10 +330,11 @@ void star_type(int rows, int type, char ch, int x, int y)
     else if (type == 1)
     {
         six_sided_star(rows, ch, x, y);
-    }}
+    }
+}
 void call_line(char ch, int size, int x, int y)
 {
-     line(ch, size, x, y);
+    line(ch, size, x, y);
 }
 void call_heart(int size, char ch, int x, int y)
 {
@@ -277,20 +346,20 @@ void call_textbox(int width, int hieght, int x, int y)
 }
 void call_pentagon(int size, char ch, int x, int y)
 {
-        pentagon(size, ch, x, y);
+    pentagon(size, ch, x, y);
 }
 void call_hexagon(int size, char ch, int x, int y)
 {
-        hexagon(size, ch, x, y);
+    hexagon(size, ch, x, y);
 }
 void call_kite(int rows, char ch, int x, int y)
 
 {
-        kite(rows, ch, x, y);
+    kite(rows, ch, x, y);
 }
 void editing(char path[])
 {
     open_file(path);
     fptr = NULL;
-    fptr = fopen(path,"a");
+    fptr = fopen(path, "a");
 }

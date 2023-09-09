@@ -1,3 +1,4 @@
+void get_shape(char name[], int size, int x, int y, char col, char ch, int fill, int type, char side, char shape,int width,int hieght);
 void free_draw_input(int x, int y,int headinglength, int width, int hieght, int middle, int ch);
 void Alphabets(int start, int end, char ch, int x, int y);
 void numbers(int start, int end, char ch, int x, int y);
@@ -19,3 +20,4 @@ void call_pentagon(int size, char ch, int x, int y);
 void call_hexagon(int size, char ch, int x, int y);
 void call_kite(int rows, char ch, int x, int y);
 void editing(char path[]);
+void get_colour(char col);

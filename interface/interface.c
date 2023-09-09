@@ -1,6 +1,24 @@
 #include "..\interface\interface_header.h"
-void set_pos(char position, int *x, int *y)
+
+void print_struct(struct Shapes *ptr)
 {
+    fprintf(fptr, "%s\n", ptr->name);
+    fprintf(fptr, "%d\n", ptr->x);
+    fprintf(fptr, "%d\n", ptr->y);
+    fprintf(fptr, "%d\n", ptr->size);
+    fprintf(fptr, "%c\n", ptr->ch);
+    fprintf(fptr, "%c\n", ptr->col);
+    fprintf(fptr, "%d\n", ptr->fill);
+    fprintf(fptr, "%d\n", ptr->type);
+    fprintf(fptr, "%c\n", ptr->shape);
+    fprintf(fptr, "%c\n", ptr->side);
+    fprintf(fptr, "%d\n", ptr->width);
+    fprintf(fptr, "%d\n", ptr->height);
+}
+void set_pos(int *x, int *y)
+{
+    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    char position;
     while (position != 'p')
     {
         position = getch();
@@ -8,33 +26,7 @@ void set_pos(char position, int *x, int *y)
         gotoxy(*x, *y);
     }
 }
-void get_colour(char col)
-{
-    if (col == 'r')
-    {
-        redcolour();
-    }
-    else if (col == 'b')
-    {
-        bluecolour();
-    }
-    else if (col == 'y')
-    {
-        yellowcolour();
-    }
-    else if (col == 'g')
-    {
-        greencolour();
-    }
-    else if (col == 'w')
-    {
-        whitecolour();
-    }
-    else
-    {
-        printf("invalid colour");
-    }
-}
+
 void printspaces(int size)
 {
     int width;
@@ -309,9 +301,8 @@ void Options()
     else
     {
         cordinates(&x, &y, ch);
-            gotoxy(x, y);
+        gotoxy(x, y);
     }
-    
 }
 void MainPage(int x, int y, int headinglength, int width, int hieght, int middle)
 {
@@ -413,406 +404,460 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
 }
 void printline()
 {
+    struct Shapes line[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int size;
-    char ch;
-    char colour;
     printf("Enter the Size: ");
     y++;
-    scanf("%d", &size);
+    scanf("%d", &line[i].size);
     printf("Enter any character to print: ");
     y++;
-    scanf(" %c", &ch);
+    scanf(" %c", &line[i].ch);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     y++;
-    scanf(" %c", &colour);
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
-
-    get_colour(colour);
-
-    call_line(ch, size, x, y);
+    scanf(" %c", &line[i].col);
+    set_pos(&line[i].x, &line[i].y);
+    get_colour(line[i].col);
+    strcpy(line[i].name, "Line");
+    line[i].fill = -1;
+    line[i].side = '~';
+    line[i].type = -1;
+    line[i].shape = '~';
+    line[i].width = -1;
+    line[i].height = -1;
+    print_struct(&line[i]);
+    call_line(line[i].ch, line[i].size, line[i].x, line[i].y);
 }
 void printsquare()
 {
-    printf("\n");
-    whitecolour();
+    struct Shapes square[100];
+    static int i = 0;
+    i++;
     int x = 0;
     int y = 26;
-    int size;
-    char ch;
-    char colour;
+    printf("\n");
+    whitecolour();
     printf("Enter the size: ");
     y++;
-    scanf("%d", &size);
+    scanf("%d", &square[i].size);
     y++;
     printf("Enter any character to print: ");
-    scanf(" %c", &ch);
+    scanf(" %c", &square[i].ch);
     y++;
     int fill;
     printf("1 to fill the shape 0 t emplty: ");
     y++;
-    scanf("%d", &fill);
+    scanf("%d", &square[i].fill);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &square[i].col);
+    get_colour(square[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
+    set_pos(&square[i].x, &square[i].y);
+    square[i].shape = '~';
+    square[i].side = '~';
+    strcpy(square[i].name, "Square");
+    square[i].type = -1;
+    square[i].width = -1;
+    square[i].height = -1;
 
-    get_colour(colour);
-    square_type(size, ch, fill, x, y);
+    print_struct(&square[i]);
+    square_type(square[i].size, square[i].ch, square[i].fill, square[i].x, square[i].y);
 }
 void printtriangle()
-
 {
+    struct Shapes triangle[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int type;
-    char shape;
-    int rows;
-    char ch;
-    int fill;
-    char side;
-    char colour;
     printf("Enter 1 for right angle triangles and 2 for complete triangle : ");
     y++;
-    scanf("%d", &type);
+    scanf("%d", &triangle[i].type);
     printf("Enter the number of rows: ");
-    scanf("%d", &rows);
+    scanf("%d", &triangle[i].size);
     y++;
     printf("Enter the shape U for Upward D for downward: ");
     y++;
-    scanf(" %c", &shape);
-    if (type == 1)
+    scanf(" %c", &triangle[i].shape);
+    if (triangle[i].type == 1)
     {
 
         printf("Enter the l for left r for right sided: ");
         y++;
-        scanf(" %c", &side);
+        scanf(" %c", &triangle[i].side);
     }
     printf("Enter any character to print: ");
     y++;
-    scanf(" %c", &ch);
+    scanf(" %c", &triangle[i].ch);
     y++;
     printf("1 to fill the shape 0 to empty: ");
     y++;
-    scanf("%d", &fill);
+    scanf("%d", &triangle[i].fill);
 
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     y = y + 6;
-    scanf(" %c", &colour);
-
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
-
-    get_colour(colour);
-    triangle_type(rows, type, fill, shape, ch, side, x, y);
+    scanf(" %c", &triangle[i].col);
+    set_pos(&triangle[i].x, &triangle[i].y);
+    get_colour(triangle[i].col);
+    strcpy(triangle[i].name, "Triangle");
+    triangle[i].width = -1;
+    triangle[i].height = -1;
+    print_struct(&triangle[i]);
+    triangle_type(triangle[i].size, triangle[i].type, triangle[i].fill, triangle[i].shape, triangle[i].ch, triangle[i].side, triangle[i].x, triangle[i].y);
 }
 void printtextbox()
 {
+    struct Shapes textbox[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int width;
-    int hieght;
-    char colour;
     printf("Enter the hieght: ");
     y++;
-    scanf("%d", &hieght);
+    scanf("%d", &textbox[i].height);
     printf("Enter the width: ");
     y++;
-    scanf("%d", &width);
+    scanf("%d", &textbox[i].width);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
     y++;
-    scanf(" %c", &colour);
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
-
-    get_colour(colour);
-    call_textbox(width, hieght, x, y);
+    scanf(" %c", &textbox[i].col);
+    set_pos(&textbox[i].x, &textbox[i].y);
+    get_colour(textbox[i].col);
+    textbox[i].side = '~';
+    textbox[i].type = -1;
+    textbox[i].shape = '~';
+    textbox[i].size = -1;
+    textbox[i].ch = '~';
+    textbox[i].fill = -1;
+    strcpy(textbox[i].name, "TextBox");
+    print_struct(&textbox[i]);
+    call_textbox(textbox[i].width, textbox[i].height, textbox[i].x, textbox[i].y);
 }
 void printtrapezium()
 {
+    struct Shapes trapezium[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int base1;
-    int base2;
-    int fill;
-    char ch;
-    char colour;
     printf("Enter the size of upper base: ");
-    scanf("%d", &base1);
+    scanf("%d", &trapezium[i].width);
     y++;
     printf("Enter the size of lower base: ");
-    scanf("%d", &base2);
+    scanf("%d", &trapezium[i].height);
     y++;
-    if (base1 > base2)
+    if (trapezium[i].width > trapezium[i].height)
     {
         printf("uppwe base should be less than the lower base\n Try Again");
         y++;
         printtrapezium();
     }
     printf("Enter any character to print: ");
-    scanf(" %c", &ch);
+    scanf(" %c", &trapezium[i].ch);
     y++;
 
     printf("1 to fill the shape 0 to empty: ");
-    scanf("%d", &fill);
+    scanf("%d", &trapezium[i].fill);
     y++;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &trapezium[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
-
-    get_colour(colour);
-
-    trapezium_type(base1, base2, fill, ch, x, y);
+    set_pos(&trapezium[i].x, &trapezium[i].y);
+    get_colour(trapezium[i].col);
+    trapezium[i].size = -1;
+    trapezium[i].shape = '~';
+    trapezium[i].side = '~';
+    trapezium[i].type = -1;
+    strcpy(trapezium[i].name, "Trapezium");
+    trapezium[i].width = -1;
+    trapezium[i].height = -1;
+    print_struct(&trapezium[i]);
+    trapezium_type(trapezium[i].width, trapezium[i].height, trapezium[i].fill, trapezium[i].ch, trapezium[i].x, trapezium[i].y);
 }
 void printparralelogram()
 {
+    struct Shapes parralelogram[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int hieght;
-    int width;
-    char ch;
-    char colour;
-    int fill;
+
     printf("Enter the hieght: ");
     y++;
-    scanf("%d", &hieght);
+    scanf("%d", &parralelogram[i].height);
     printf("Enter width: ");
     y++;
-    scanf("%d", &width);
+    scanf("%d", &parralelogram[i].width);
     printf("Enter any character to print: ");
     y++;
-    scanf(" %c", &ch);
+    scanf(" %c", &parralelogram[i].ch);
 
     printf("1 to fill the shape 0 to empty: ");
     y++;
-    scanf("%d", &fill);
+    scanf("%d", &parralelogram[i].fill);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &parralelogram[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
 
-    char position;
-    set_pos(position, &x, &y);
+    set_pos(&parralelogram[i].x, &parralelogram[i].y);
 
-    get_colour(colour);
-    parallelogram_type(hieght, width, fill, ch, x, y);
+    get_colour(parralelogram[i].col);
+    parralelogram[i].side = '~';
+    parralelogram[i].shape = '~';
+    parralelogram[i].type = -1;
+    strcpy(parralelogram[i].name, "Parralelogram");
+    print_struct(&parralelogram[i]);
+    parallelogram_type(parralelogram[i].height, parralelogram[i].width, parralelogram[i].fill, parralelogram[i].ch, parralelogram[i].x, parralelogram[i].y);
 }
 void printdiamond()
 {
+    struct Shapes diamond[100];
+    static int i = 0;
+    i++;
+
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int size;
-    char ch;
     printf("Enter the rows: ");
     y++;
-    scanf("%d", &size);
+    scanf("%d", &diamond[i].size);
     printf("Enter any character to print: ");
     y++;
-    scanf(" %c", &ch);
-    int fill;
+    scanf(" %c", &diamond[i].ch);
+
     printf("Press 1 to make complete 0 to make half diamond: ");
     y++;
-    scanf("%d", &fill);
-    char colour;
+    scanf("%d", &diamond[i].fill);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &diamond[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
 
-    get_colour(colour);
-    diamond_type(size, fill, ch, x, y);
+    set_pos(&diamond[i].x, &diamond[i].y);
+
+    get_colour(diamond[i].col);
+    diamond[i].side = '~';
+    diamond[i].type = -1;
+    diamond[i].shape = '~';
+    strcpy(diamond[i].name, "Diamond");
+    diamond[i].width = -1;
+    diamond[i].height = -1;
+    print_struct(&diamond[i]);
+    diamond_type(diamond[i].size, diamond[i].fill, diamond[i].ch, diamond[i].x, diamond[i].y);
 }
 void printcircle()
 {
+    struct Shapes circle[100];
+    static int i = 0;
+    i++;
+
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int size;
-    char ch;
-
     printf("Enter the Radius: ");
     y++;
-    scanf("%d", &size);
+    scanf("%d", &circle[i].size);
     printf("Enter any character to print: ");
     y++;
-    scanf(" %c", &ch);
+    scanf(" %c", &circle[i].ch);
     int fill;
     printf("Press 1 to make hollow 0 to make filled circle: ");
     y++;
-    scanf("%d", &fill);
+    scanf("%d", &circle[i].fill);
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &circle[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
 
-    get_colour(colour);
+    set_pos(&circle[i].x, &circle[i].y);
 
-    circle_type(size, fill, ch, x, y);
+    get_colour(circle[i].col);
+    circle[i].side = '~';
+    circle[i].type = -1;
+    circle[i].shape = '~';
+    strcpy(circle[i].name, "Circle");
+    circle[i].width = -1;
+    circle[i].height = -1;
+    print_struct(&circle[i]);
+    circle_type(circle[i].size, circle[i].fill, circle[i].ch, circle[i].x, circle[i].y);
 }
 void printheart()
 {
+    struct Shapes heart[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int size;
-    char ch;
-
     printf("Enter the Size: ");
     y++;
-    scanf("%d", &size);
+    scanf("%d", &heart[i].size);
     printf("Enter any character to print: ");
-    scanf(" %c", &ch);
+    scanf(" %c", &heart[i].ch);
     y++;
-    char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &heart[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
+    set_pos(&heart[i].x, &heart[i].y);
     //  gotoxy(x, y);
-    get_colour(colour);
-    call_heart(size, ch, x, y);
+    get_colour(heart[i].col);
+    heart[i].side = '~';
+    heart[i].type = -1;
+    heart[i].shape = '~';
+    heart[i].fill = -1;
+    strcpy(heart[i].name, "Heart");
+    heart[i].width = -1;
+    heart[i].height = -1;
+    print_struct(&heart[i]);
+    call_heart(heart[i].size, heart[i].ch, heart[i].x, heart[i].y);
 }
 void printpentagon()
 {
+    struct Shapes pentagon[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    char ch;
-    int size;
-
     printf("Enter size: ");
     y++;
-    scanf("%d", &size);
+    scanf("%d", &pentagon[i].size);
     printf("Enter any character to print: ");
     y++;
-    scanf(" %c", &ch);
-    char colour;
+    scanf(" %c", &pentagon[i].ch);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &pentagon[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
+    set_pos(&pentagon[i].x, &pentagon[i].y);
 
-    get_colour(colour);
-    call_pentagon(size, ch, x, y);
+    get_colour(pentagon[i].col);
+    pentagon[i].side = '~';
+    pentagon[i].type = -1;
+    pentagon[i].shape = '~';
+    pentagon[i].fill = -1;
+    strcpy(pentagon[i].name, "Pentagon");
+    pentagon[i].width = -1;
+    pentagon[i].height = -1;
+    print_struct(&pentagon[i]);
+    call_pentagon(pentagon[i].size, pentagon[i].ch, pentagon[i].x, pentagon[i].y);
 }
 void printhexagon()
 {
+    struct Shapes hexagon[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int size;
-    char ch;
     printf("Enter size: ");
     y++;
-    scanf("%d", &size);
+    scanf("%d", &hexagon[i].size);
     printf("Enter any character to print: ");
     y++;
-    scanf(" %c", &ch);
-    char colour;
+    scanf(" %c", &hexagon[i].ch);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    y++;
-    scanf(" %c", &colour);
+    scanf(" %c", &hexagon[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
+    set_pos(&hexagon[i].x, &hexagon[i].y);
 
-    get_colour(colour);
-    call_hexagon(size, ch, x, y);
+    get_colour(hexagon[i].col);
+    hexagon[i].side = '~';
+    hexagon[i].type = -1;
+    hexagon[i].shape = '~';
+    hexagon[i].fill = -1;
+    strcpy(hexagon[i].name, "Hexagon");
+    hexagon[i].width = -1;
+    hexagon[i].height = -1;
+    print_struct(&hexagon[i]);
+    call_hexagon(hexagon[i].size, hexagon[i].ch, hexagon[i].x, hexagon[i].y);
 }
 void printstar()
 {
+    struct Shapes star[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int size;
-    char ch;
-    int type;
     printf("Enter the type 0 for four sided and 1 to six sided star: ");
     y++;
-    scanf("%d", &type);
-    printf("Enter size:");
-    y++;
-    scanf("%d", &size);
-    printf("Enter any character to print: ");
-    y++;
-    scanf(" %c", &ch);
+    scanf("%d", &star[i].type);
     printf("Enter the size of star(Enter the odd number for more symmetrical shape): ");
     y++;
-    char colour;
+    scanf("%d", &star[i].size);
+    printf("Enter any character to print: ");
+    y++;
+    scanf(" %c", &star[i].ch);
+    y++;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &star[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
+    set_pos(&star[i].x, &star[i].y);
+    get_colour(star[i].col);
+    star[i].side = '~';
+    star[i].shape = '~';
+    star[i].size = -1;
+    star[i].fill = -1;
+    strcpy(star[i].name, "Star");
 
-    get_colour(colour);
-    star_type(size, type, ch, x, y);
+    star[i].width = -1;
+    star[i].height = -1;
+    print_struct(&star[i]);
+    star_type(star[i].size, star[i].type, star[i].ch, star[i].x, star[i].y);
 }
 void printkite()
 {
+    struct Shapes kite[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
-    int size;
-    char ch;
     printf("Enter the rows: ");
     y++;
-    scanf("%d", &size);
+    scanf("%d", &kite[i].size);
     printf("Enter any character to print: ");
     y++;
-    scanf(" %c", &ch);
+    scanf(" %c", &kite[i].ch);
     char colour;
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &kite[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
-
-    get_colour(colour);
-    call_kite(size, ch, x, y);
+    set_pos(&kite[i].x, &kite[i].y);
+    get_colour(kite[i].col);
+    kite[i].side = '~';
+    kite[i].type = -1;
+    kite[i].shape = '~';
+    kite[i].fill = -1;
+    strcpy(kite[i].name, "Kite");
+    kite[i].width = -1;
+    kite[i].height = -1;
+    print_struct(&kite[i]);
+    call_kite(kite[i].size, kite[i].ch, kite[i].x, kite[i].y);
 }
 void printalphabets()
 {
+    struct Shapes alpha_shapes[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
@@ -820,57 +865,61 @@ void printalphabets()
     printf("Enter the starting Alphabet(Uppercase Letter): ");
     y++;
     char start;
-    scanf(" %c", &start);
+    scanf(" %c", &alpha_shapes[i].side); // here i am getting input in side and shape of start and end because i dont want to initialize two new varibles in struct
     printf("Enter the ending Alphabet(Uppercase Letter): ");
     y++;
     char end;
-    scanf(" %c", &end);
+    scanf(" %c", &alpha_shapes[i].shape);
     char ch;
     printf("Enter the character you want to print: ");
     y++;
-    scanf(" %c", &ch);
-    char colour;
+    scanf(" %c", &alpha_shapes[i].ch);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &alpha_shapes[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
-
-    get_colour(colour);
-
-    Alphabets(start, end, ch, x, y);
+    set_pos(&alpha_shapes[i].x, &alpha_shapes[i].y);
+    get_colour(alpha_shapes[i].col);
+    alpha_shapes[i].type = -1;
+    alpha_shapes[i].ch = '~';
+    alpha_shapes[i].fill = -1;
+    alpha_shapes[i].size = -1;
+    strcpy(alpha_shapes[i].name, "Alphabets");
+    alpha_shapes[i].width = -1;
+    alpha_shapes[i].height = -1;
+    print_struct(&alpha_shapes[i]);
+    Alphabets(alpha_shapes[i].side, alpha_shapes[i].shape, alpha_shapes[i].ch, alpha_shapes[i].x, alpha_shapes[i].y);
 }
 void printnumbers()
 {
+    struct Shapes number_shapes[100];
+    static int i = 0;
+    i++;
     printf("\n");
     whitecolour();
     int x = 0;
     int y = 26;
+    printf("Enter the starting Alphabet(Uppercase Letter): ");
+    y++;
 
-    char ch;
-    printf("Enter the starting Number: ");
+    scanf(" %c", &number_shapes[i].fill); // here i am getting input in fill and type of start and end because i dont want to initialize two new varibles in struct
+    printf("Enter the ending Alphabet(Uppercase Letter): ");
     y++;
-    int start;
-    scanf(" %d", &start);
-    printf("Enter the ending Number: ");
-    y++;
-    int end;
-    scanf(" %d", &end);
-    printf("Enter the character you want to print: ");
-    y++;
-    scanf(" %c", &ch);
-    char colour;
+    scanf(" %c", &number_shapes[i].type);
+    scanf(" %c", &number_shapes[i].ch);
     printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    scanf(" %c", &colour);
+    scanf(" %c", &number_shapes[i].col);
     y = y + 6;
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
-    char position;
-    set_pos(position, &x, &y);
+    set_pos(&number_shapes[i].x, &number_shapes[i].y);
+    get_colour(number_shapes[i].col);
 
-    get_colour(colour);
-
-    numbers(start, end, ch, x, y);
+    strcpy(number_shapes[i].name, "Numbers");
+    number_shapes[i].side = '~';
+    number_shapes[i].shape = '~';
+    number_shapes[i].size = -1;
+    number_shapes[i].width = -1;
+    number_shapes[i].height = -1;
+    print_struct(&number_shapes[i]);
+    numbers(number_shapes[i].fill, number_shapes[i].type, number_shapes[i].ch, number_shapes[i].x, number_shapes[i].y);
 }
 void savefilemenu()
 
@@ -927,7 +976,7 @@ void edit_file()
     gets(folder_add);
     gotoxy(0, 60);
     editing(folder_add);
-    gotoxy(0,0);
+    gotoxy(0, 0);
     printspaces(59);
     Options();
 }
