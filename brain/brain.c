@@ -93,40 +93,61 @@ void get_shape(char name[], int size, int x, int y, char col, char ch, int fill,
     {
         triangle_type(size, type, fill, shape, ch, side, x, y);
     }
-        else if ((strcmp(name, "Triangle") == 0))
+    else if ((strcmp(name, "Square") == 0))
     {
-        triangle_type(size, type, fill, shape, ch, side, x, y);
+        square_type(size, ch, fill, x, y);
     }
-        else if ((strcmp(name, "Triangle") == 0))
+    else if ((strcmp(name, "TextBox") == 0))
     {
-        triangle_type(size, type, fill, shape, ch, side, x, y);
+        call_textbox(width, hieght, x, y);
     }
-        else if ((strcmp(name, "Triangle") == 0))
+    else if ((strcmp(name, "Trapezium") == 0))
     {
-        triangle_type(size, type, fill, shape, ch, side, x, y);
+        trapezium_type(width, hieght, fill, ch, x, y);
     }
-        else if ((strcmp(name, "Triangle") == 0))
+    else if ((strcmp(name, "Parralelogram") == 0))
     {
-        triangle_type(size, type, fill, shape, ch, side, x, y);
+        parallelogram_type(hieght, width, fill, ch, x, y);
     }
-        else if ((strcmp(name, "Triangle") == 0))
+    else if ((strcmp(name, "Diamond") == 0))
     {
-        triangle_type(size, type, fill, shape, ch, side, x, y);
+        diamond_type(size, fill, ch, x, y);
     }
-        else if ((strcmp(name, "Triangle") == 0))
+    else if ((strcmp(name, "Circle") == 0))
     {
-        triangle_type(size, type, fill, shape, ch, side, x, y);
+        circle_type(size, fill, ch, x, y);
     }
-        else if ((strcmp(name, "Triangle") == 0))
+    else if ((strcmp(name, "Heart") == 0))
     {
-        triangle_type(size, type, fill, shape, ch, side, x, y);
+        call_heart(size, ch, x, y);
     }
-        else if ((strcmp(name, "Triangle") == 0))
+    else if ((strcmp(name, "Pentagon") == 0))
     {
-        triangle_type(size, type, fill, shape, ch, side, x, y);
+        call_pentagon(size, ch, x, y);
     }
-    
-    else{
+    else if ((strcmp(name, "Hexagon") == 0))
+    {
+        call_hexagon(size, ch, x, y);
+    }
+
+    else if ((strcmp(name, "Star") == 0))
+    {
+        star_type(size, type, ch, x, y);
+    }
+    else if ((strcmp(name, "Kite") == 0))
+    {
+        call_kite(size, ch, x, y);
+    }
+    else if ((strcmp(name, "Alphabets") == 0))
+    {
+        Alphabets(side, shape, ch, x, y);
+    }
+    else if ((strcmp(name, "Numbers") == 0))
+    {
+        numbers(fill, type, ch, x, y);
+    }
+    else
+    {
         printf("noting relative found");
     }
 }
@@ -276,7 +297,6 @@ void open_file(char path[])
         fscanf(fptr2, " %d", &hieght);
         end = fgetc(fptr2);
         get_shape(name, size, x, y, col, ch, fill, type, shape, side, width, hieght);
-        
     }
 }
 void square_type(int size, char ch, int fill, int x, int y)

@@ -1,5 +1,8 @@
 #include "..\interface\interface_header.h"
 
+int x = 77;
+int y = 6;
+
 void print_struct(struct Shapes *ptr)
 {
     fprintf(fptr, "%s\n", ptr->name);
@@ -15,15 +18,19 @@ void print_struct(struct Shapes *ptr)
     fprintf(fptr, "%d\n", ptr->width);
     fprintf(fptr, "%d\n", ptr->height);
 }
-void set_pos(int *x, int *y)
+void set_pos(int *p, int *q)
 {
-    printf("Use the arrow keys to move and specify where you want to draw this pattern on console and Press p to print");
+    gotoxy(x + 2, y + 4);
+    printf("Use the arrow keys to move and Press p to print anywhere");
     char position;
+    *p = 0;
+    *q = 30;
+    gotoxy(*p, *q);
     while (position != 'p')
     {
         position = getch();
-        cordinates(&(*x), &(*y), position);
-        gotoxy(*x, *y);
+        cordinates(&(*p), &(*q), position);
+        gotoxy(*p, *q);
     }
 }
 
@@ -70,6 +77,18 @@ void Heading(int x, int y, int headinglength, int width, int hieght, int middle,
     printStarLine(width, x, y);
     y++;
 }
+void input_box()
+{
+    int width, hieght;
+    getConsoleSize(&width, &hieght);
+    x = width - 75;
+    y = 3;
+    gotoxy(x, y);
+    call_textbox(74, 19, x, y);
+    x++;
+    y += 2;
+}
+
 void free_draw_instruction(int x, int y, int headinglength, int width, int hieght, int middle)
 {
 
@@ -144,16 +163,20 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
     printf("-> Press Enter to go to next line\n");
     printf("->Press backspace to return to main menu\n");
     printf("-> Press q to quit\n");
-    y = 23;
+
     getConsoleSize(&width, &hieght);
     printStarLine(width, x, y);
-    y++;
+    y = 24;
     char string2[] = "Start Drawing from here";
     headinglength = strlen(string2);
     middle = (width - headinglength) / 2;
     printHeading(middle, y, string2);
     while (1)
     {
+        whitecolour();
+        input_box();
+        gotoxy(75, 4);
+        printf("Waiting for input");
         ch = getch();
         if (ch == 'a')
         {
@@ -239,6 +262,8 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
 }
 void Options()
 {
+
+    whitecolour();
     int width, hieght;
 
     int headinglength, ch;
@@ -407,17 +432,20 @@ void printline()
     struct Shapes line[100];
     static int i = 0;
     i++;
-    printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
+
+    gotoxy(x, y);
     printf("Enter the Size: ");
     y++;
     scanf("%d", &line[i].size);
+    gotoxy(x, y);
+
     printf("Enter any character to print: ");
     y++;
     scanf(" %c", &line[i].ch);
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    gotoxy(x, y);
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
+
     y++;
     scanf(" %c", &line[i].col);
     set_pos(&line[i].x, &line[i].y);
@@ -437,25 +465,30 @@ void printsquare()
     struct Shapes square[100];
     static int i = 0;
     i++;
-    int x = 0;
-    int y = 26;
-    printf("\n");
+
     whitecolour();
+    gotoxy(x, y);
     printf("Enter the size: ");
     y++;
     scanf("%d", &square[i].size);
-    y++;
+
+    gotoxy(x, y);
+
     printf("Enter any character to print: ");
     scanf(" %c", &square[i].ch);
     y++;
     int fill;
+    gotoxy(x, y);
+
     printf("1 to fill the shape 0 t emplty: ");
     y++;
     scanf("%d", &square[i].fill);
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    gotoxy(x, y);
+
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &square[i].col);
     get_colour(square[i].col);
-    y = y + 6;
+
     set_pos(&square[i].x, &square[i].y);
     square[i].shape = '~';
     square[i].side = '~';
@@ -474,19 +507,24 @@ void printtriangle()
     i++;
     printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
-    printf("Enter 1 for right angle triangles and 2 for complete triangle : ");
+    gotoxy(x, y);
+
+    printf("Enter 1 for right angle  and 2 for complete triangle : ");
     y++;
     scanf("%d", &triangle[i].type);
+    gotoxy(x, y);
+
     printf("Enter the number of rows: ");
     scanf("%d", &triangle[i].size);
     y++;
+    gotoxy(x, y);
+
     printf("Enter the shape U for Upward D for downward: ");
     y++;
     scanf(" %c", &triangle[i].shape);
     if (triangle[i].type == 1)
     {
+        gotoxy(x, y);
 
         printf("Enter the l for left r for right sided: ");
         y++;
@@ -496,17 +534,20 @@ void printtriangle()
     {
         triangle[i].side = '~';
     }
-    
+    gotoxy(x, y);
+
     printf("Enter any character to print: ");
     y++;
     scanf(" %c", &triangle[i].ch);
     y++;
+    gotoxy(x, y);
+
     printf("1 to fill the shape 0 to empty: ");
     y++;
     scanf("%d", &triangle[i].fill);
+    gotoxy(x, y);
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
 
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
-    y = y + 6;
     scanf(" %c", &triangle[i].col);
     set_pos(&triangle[i].x, &triangle[i].y);
     get_colour(triangle[i].col);
@@ -523,15 +564,18 @@ void printtextbox()
     i++;
     printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
     printf("Enter the hieght: ");
     y++;
     scanf("%d", &textbox[i].height);
+    gotoxy(x, y);
+
     printf("Enter the width: ");
     y++;
     scanf("%d", &textbox[i].width);
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    gotoxy(x, y);
+
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     y++;
     scanf(" %c", &textbox[i].col);
     set_pos(&textbox[i].x, &textbox[i].y);
@@ -553,30 +597,39 @@ void printtrapezium()
     i++;
     printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
+
     printf("Enter the size of upper base: ");
     scanf("%d", &trapezium[i].width);
     y++;
+    gotoxy(x, y);
+
     printf("Enter the size of lower base: ");
     scanf("%d", &trapezium[i].height);
     y++;
     if (trapezium[i].width > trapezium[i].height)
     {
+        gotoxy(x, y);
+
         printf("uppwe base should be less than the lower base\n Try Again");
         y++;
         printtrapezium();
     }
+    gotoxy(x, y);
+
     printf("Enter any character to print: ");
     scanf(" %c", &trapezium[i].ch);
     y++;
+    gotoxy(x, y);
 
     printf("1 to fill the shape 0 to empty: ");
     scanf("%d", &trapezium[i].fill);
     y++;
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    gotoxy(x, y);
+
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &trapezium[i].col);
-    y = y + 6;
+
     set_pos(&trapezium[i].x, &trapezium[i].y);
     get_colour(trapezium[i].col);
     trapezium[i].size = -1;
@@ -596,25 +649,31 @@ void printparralelogram()
     i++;
     printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
 
     printf("Enter the hieght: ");
     y++;
     scanf("%d", &parralelogram[i].height);
+    gotoxy(x, y);
+
     printf("Enter width: ");
     y++;
     scanf("%d", &parralelogram[i].width);
+    gotoxy(x, y);
+
     printf("Enter any character to print: ");
     y++;
     scanf(" %c", &parralelogram[i].ch);
 
     printf("1 to fill the shape 0 to empty: ");
     y++;
+    gotoxy(x, y);
+
     scanf("%d", &parralelogram[i].fill);
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
+    gotoxy(x, y);
+
     scanf(" %c", &parralelogram[i].col);
-    y = y + 6;
 
     set_pos(&parralelogram[i].x, &parralelogram[i].y);
 
@@ -631,24 +690,27 @@ void printdiamond()
     struct Shapes diamond[100];
     static int i = 0;
     i++;
-
-    printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
+
     printf("Enter the rows: ");
     y++;
     scanf("%d", &diamond[i].size);
+    gotoxy(x, y);
+
     printf("Enter any character to print: ");
     y++;
     scanf(" %c", &diamond[i].ch);
 
     printf("Press 1 to make complete 0 to make half diamond: ");
+    gotoxy(x, y);
+
     y++;
     scanf("%d", &diamond[i].fill);
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
+    gotoxy(x, y);
+
     scanf(" %c", &diamond[i].col);
-    y = y + 6;
 
     set_pos(&diamond[i].x, &diamond[i].y);
 
@@ -668,24 +730,28 @@ void printcircle()
     static int i = 0;
     i++;
 
-    printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
+
     printf("Enter the Radius: ");
     y++;
     scanf("%d", &circle[i].size);
     printf("Enter any character to print: ");
+    gotoxy(x, y);
+
     y++;
     scanf(" %c", &circle[i].ch);
     int fill;
     printf("Press 1 to make hollow 0 to make filled circle: ");
+    gotoxy(x, y);
+
     y++;
     scanf("%d", &circle[i].fill);
     char colour;
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
+    gotoxy(x, y);
+
     scanf(" %c", &circle[i].col);
-    y = y + 6;
 
     set_pos(&circle[i].x, &circle[i].y);
 
@@ -704,19 +770,23 @@ void printheart()
     struct Shapes heart[100];
     static int i = 0;
     i++;
-    printf("\n");
+
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
+
     printf("Enter the Size: ");
     y++;
     scanf("%d", &heart[i].size);
+    gotoxy(x, y);
+
     printf("Enter any character to print: ");
     scanf(" %c", &heart[i].ch);
     y++;
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    gotoxy(x, y);
+
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &heart[i].col);
-    y = y + 6;
+
     set_pos(&heart[i].x, &heart[i].y);
     //  gotoxy(x, y);
     get_colour(heart[i].col);
@@ -737,17 +807,16 @@ void printpentagon()
     i++;
     printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
+
     printf("Enter size: ");
     y++;
     scanf("%d", &pentagon[i].size);
     printf("Enter any character to print: ");
     y++;
     scanf(" %c", &pentagon[i].ch);
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &pentagon[i].col);
-    y = y + 6;
+
     set_pos(&pentagon[i].x, &pentagon[i].y);
 
     get_colour(pentagon[i].col);
@@ -766,19 +835,23 @@ void printhexagon()
     struct Shapes hexagon[100];
     static int i = 0;
     i++;
-    printf("\n");
+
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
+
     printf("Enter size: ");
     y++;
     scanf("%d", &hexagon[i].size);
     printf("Enter any character to print: ");
+    gotoxy(x, y);
+
     y++;
     scanf(" %c", &hexagon[i].ch);
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    gotoxy(x, y);
+
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &hexagon[i].col);
-    y = y + 6;
+
     set_pos(&hexagon[i].x, &hexagon[i].y);
 
     get_colour(hexagon[i].col);
@@ -797,23 +870,27 @@ void printstar()
     struct Shapes star[100];
     static int i = 0;
     i++;
-    printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
+
     printf("Enter the type 0 for four sided and 1 to six sided star: ");
     y++;
     scanf("%d", &star[i].type);
+    gotoxy(x, y);
+
     printf("Enter the size of star(Enter the odd number for more symmetrical shape): ");
     y++;
     scanf("%d", &star[i].size);
+    gotoxy(x, y);
+
     printf("Enter any character to print: ");
-    y++;
     scanf(" %c", &star[i].ch);
     y++;
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    gotoxy(x, y);
+
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &star[i].col);
-    y = y + 6;
+
     set_pos(&star[i].x, &star[i].y);
     get_colour(star[i].col);
     star[i].side = '~';
@@ -832,20 +909,24 @@ void printkite()
     struct Shapes kite[100];
     static int i = 0;
     i++;
-    printf("\n");
+
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
+
     printf("Enter the rows: ");
     y++;
     scanf("%d", &kite[i].size);
+    gotoxy(x, y);
+
     printf("Enter any character to print: ");
     y++;
     scanf(" %c", &kite[i].ch);
     char colour;
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    gotoxy(x, y);
+
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &kite[i].col);
-    y = y + 6;
+
     set_pos(&kite[i].x, &kite[i].y);
     get_colour(kite[i].col);
     kite[i].side = '~';
@@ -865,23 +946,30 @@ void printalphabets()
     i++;
     printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
+    gotoxy(x, y);
+
     printf("Enter the starting Alphabet(Uppercase Letter): ");
     y++;
     char start;
-    scanf(" %c", &alpha_shapes[i].side); // here i am getting input in side and shape of start and end because i dont want to initialize two new varibles in struct
+    scanf(" %c", &alpha_shapes[i].side);
+    gotoxy(x, y);
+    // here i am getting input in side and shape of start and end because i dont want to initialize two new varibles in struct
     printf("Enter the ending Alphabet(Uppercase Letter): ");
     y++;
     char end;
     scanf(" %c", &alpha_shapes[i].shape);
     char ch;
+    gotoxy(x, y);
+
     printf("Enter the character you want to print: ");
+    gotoxy(x, y);
+
     y++;
     scanf(" %c", &alpha_shapes[i].ch);
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
+
     scanf(" %c", &alpha_shapes[i].col);
-    y = y + 6;
+
     set_pos(&alpha_shapes[i].x, &alpha_shapes[i].y);
     get_colour(alpha_shapes[i].col);
     alpha_shapes[i].type = -1;
@@ -901,19 +989,23 @@ void printnumbers()
     i++;
     printf("\n");
     whitecolour();
-    int x = 0;
-    int y = 26;
-    printf("Enter the starting Alphabet(Uppercase Letter): ");
+    gotoxy(x, y);
+
+    printf("Enter the starting number: ");
     y++;
 
-    scanf(" %c", &number_shapes[i].fill); // here i am getting input in fill and type of start and end because i dont want to initialize two new varibles in struct
-    printf("Enter the ending Alphabet(Uppercase Letter): ");
+    scanf("%d", &number_shapes[i].fill);
+    gotoxy(x, y);
+    // here i am getting input in fill and type of start and end because i dont want to initialize two new varibles in struct
+    printf("Enter the ending number");
     y++;
-    scanf(" %c", &number_shapes[i].type);
+    scanf("%d", &number_shapes[i].type);
     scanf(" %c", &number_shapes[i].ch);
-    printf("Enter a colour: \n y for yellow\n b for blue\n r for red\n w for white\n g for green\n");
+    gotoxy(x, y);
+
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &number_shapes[i].col);
-    y = y + 6;
+
     set_pos(&number_shapes[i].x, &number_shapes[i].y);
     get_colour(number_shapes[i].col);
 
@@ -976,12 +1068,12 @@ void edit_file()
     opendirectory(dir_add);
     printf("\n");
     printf("Enter the folder absolute path with the file name you want to edit: ");
-
     char folder_add[100];
     gets(folder_add);
     gotoxy(0, 60);
     editing(folder_add);
     gotoxy(0, 0);
-    printspaces(59);
+    printspaces(40);
+    whitecolour();
     Options();
 }

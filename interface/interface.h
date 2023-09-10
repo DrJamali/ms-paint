@@ -44,3 +44,4 @@ void Heading(int x, int y, int headinglength, int width, int hieght, int middle,
 void viewfile();
 void edit_file();
 void print_struct(struct Shapes *ptr);
+void input_box();
