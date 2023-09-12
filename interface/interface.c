@@ -736,20 +736,20 @@ void printcircle()
     printf("Enter the Radius: ");
     y++;
     scanf("%d", &circle[i].size);
-    printf("Enter any character to print: ");
     gotoxy(x, y);
+    printf("Enter any character to print: ");
 
     y++;
     scanf(" %c", &circle[i].ch);
     int fill;
-    printf("Press 1 to make hollow 0 to make filled circle: ");
     gotoxy(x, y);
+    printf("Press 1 to make hollow 0 to make filled circle: ");
 
     y++;
     scanf("%d", &circle[i].fill);
     char colour;
-    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     gotoxy(x, y);
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
 
     scanf(" %c", &circle[i].col);
 
