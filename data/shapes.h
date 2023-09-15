@@ -18,4 +18,3 @@ void hexagon(int size, char ch, int x, int y);
 void four_sided_star(int rows, char ch, int x, int y);
 void six_sided_star(int rows, char ch, int x, int y);
 void kite(int rows, char ch, int x, int y);
-void nextline();

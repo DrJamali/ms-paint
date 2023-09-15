@@ -265,6 +265,7 @@ void fill_parralelogram(int width, int hieght, char ch, int x, int y)
 }
 void hollow_parralelogram(int width, int hieght, char ch, int x, int y)
 {
+
     for (int i = 0; i < hieght; i++)
     {
         for (int j = i; j < hieght; j++)
@@ -294,10 +295,10 @@ void fill_trapezium(int base1, int base2, char ch, int x, int y)
 
     for (int i = 0; i < ((base2 - base1) / 2) + 1; i++)
     {
-
+        gotoxy(x, y);
         for (int j = 1; j <= base2; j++)
         {
-            if (j > ((base2 - base1) / 2) - i && j <= base1 + ((base2 - base1) / 2) + i)
+            if ((i == 0 && ((j > ((base2 - base1) / 2)) && j <= base1 + ((base2 - base1) / 2))) || i == ((base2 - base1) / 2) || j == (((base2 - base1) / 2) - i) + 1 || j == base1 + ((base2 - base1) / 2) + i)
             {
                 printf("%c", ch);
             }
@@ -315,6 +316,7 @@ void fill_trapezium(int base1, int base2, char ch, int x, int y)
 }
 void hollow_trapezium(int base1, int base2, char ch, int x, int y)
 {
+
     for (int i = 0; i < ((base2 - base1) / 2) + 1; i++)
     {
         gotoxy(x, y);
@@ -336,7 +338,6 @@ void hollow_trapezium(int base1, int base2, char ch, int x, int y)
         gotoxy(x, y);
     }
 }
-
 void heart(int size, char ch, int x, int y)
 {
 
@@ -1024,8 +1025,4 @@ void kite(int rows, char ch, int x, int y)
         y++;
         gotoxy(x, y);
     }
-}
-void nextline()
-{
-    printf("\n");
 }

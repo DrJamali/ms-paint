@@ -8,6 +8,7 @@
 #include <windows.h>
 #include<dirent.h>
 #include<unistd.h>
+#include<ctype.h>
 
 extern FILE *fptr; 
 #include "shapes.h"

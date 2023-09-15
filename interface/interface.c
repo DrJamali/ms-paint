@@ -1,4 +1,81 @@
 #include "..\interface\interface_header.h"
+int is_valid_size(int size)
+{
+    if (size <= 100 && size != 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+int is_valid_char(char ch)
+{
+    if (isprint(ch))
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+int is_valid_col(char col)
+{
+    if (col == 'r' || col == 'y' || col == 'g' || col == 'b' || col == 'w')
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+int is_valid_fill(int fill)
+{
+    if (fill == 1 || fill == 0)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+int is_valid_type(int type)
+{
+    if (type == 1 || type == 2)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+int is_valid_shape(char shape)
+{
+    if (shape == 'u' || shape == 'd')
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+int is_valid_side(char side)
+{
+    if (side == 'l' || side == 'r')
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
 
 int x = 77;
 int y = 6;
@@ -21,6 +98,7 @@ void print_struct(struct Shapes *ptr)
 void set_pos(int *p, int *q)
 {
     gotoxy(x + 2, y + 4);
+
     printf("Use the arrow keys to move and Press p to print anywhere");
     char position;
     *p = 0;
@@ -31,6 +109,14 @@ void set_pos(int *p, int *q)
         position = getch();
         cordinates(&(*p), &(*q), position);
         gotoxy(*p, *q);
+    }
+    if (*q < 28)
+    {
+        gotoxy(x + 5, y + 6);
+        printf("Hey Dont Print there !!! Don't you see the boundary downward?? \n");
+        gotoxy(x + 6, y + 7);
+        printf("Now try again");
+        set_pos(&(*p), &(*q));
     }
 }
 
@@ -49,9 +135,9 @@ void printspaces(int size)
         printf("\n");
     }
 }
-void printStarLine(int length, int x, int y)
+void printStarLine(int length, int p, int q)
 {
-    gotoxy(x, y);
+    gotoxy(p, q);
     for (int i = 0; i < length; i++)
     {
         printf("*");
@@ -92,18 +178,6 @@ void input_box()
 void free_draw_instruction(int x, int y, int headinglength, int width, int hieght, int middle)
 {
 
-    // getConsoleSize(&width, &hieght);
-    // x = 0;
-    // y = 0;
-    // printStarLine(width, x, y);
-    // y++;
-    // char string[] = "Intructions";
-    // headinglength = strlen(string);
-    // middle = (width - headinglength) / 2;
-    // printHeading(middle, y, string);
-    // y++;
-    // printStarLine(width, x, y);
-    // y++;
     char string[] = "Instructions";
     Heading(x, y, headinglength, middle, width, middle, string);
     printf("Use the arrow button to move\n");
@@ -125,23 +199,15 @@ void free_draw_instruction(int x, int y, int headinglength, int width, int hiegh
     }
     else if (ch == 'm')
     {
+        gotoxy(0, 0);
+        printspaces(15);
+        whitecolour();
         Options();
     }
 }
 void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middle, char ch)
 {
-    // getConsoleSize(&width, &hieght);
-    // x = 0;
-    // y = 0;
-    // printStarLine(width, x, y);
-    // y++;
-    // char string[] = "Welcome to Shape Mene";
-    // headinglength = strlen(string);
-    // middle = (width - headinglength) / 2;
-    // printHeading(middle, y, string);
-    // y++;
-    // printStarLine(width, x, y);
-    // y++;
+
     char string[] = "Shape Menu";
     Heading(x, y, headinglength, middle, width, middle, string);
     printf("-> Press a to make line\n");
@@ -160,13 +226,12 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
     printf("-> Press n to make arrows\n");
     printf("-> Press o to print alphabets\n");
     printf("-> Press p to print numbers\n");
-    printf("-> Press Enter to go to next line\n");
     printf("->Press backspace to return to main menu\n");
     printf("-> Press q to quit\n");
-
-    getConsoleSize(&width, &hieght);
-    printStarLine(width, x, y);
     y = 24;
+    getConsoleSize(&width, &hieght);
+    printStarLine(width, 0, y);
+    y++;
     char string2[] = "Start Drawing from here";
     headinglength = strlen(string2);
     middle = (width - headinglength) / 2;
@@ -251,18 +316,19 @@ void ShapeMenu(int x, int y, int headinglength, int width, int hieght, int middl
         {
             whitecolour();
             gotoxy(0, 0);
-            printspaces(25);
+            printspaces(28);
             Options();
         }
-        else if (ch == 13)
+        else
         {
-            nextline();
+            ShapeMenu(x, y, headinglength, middle, width, middle, ch);
         }
     }
 }
 void Options()
 {
 
+    // printspaces(30);
     whitecolour();
     int width, hieght;
 
@@ -294,6 +360,8 @@ void Options()
     ch = getch();
     if (ch == 49)
     {
+        gotoxy(0, 0);
+        printspaces(27);
         ShapeMenu(x, y, headinglength, middle, width, middle, ch);
     }
     else if (ch == 50)
@@ -325,8 +393,7 @@ void Options()
     }
     else
     {
-        cordinates(&x, &y, ch);
-        gotoxy(x, y);
+        Options();
     }
 }
 void MainPage(int x, int y, int headinglength, int width, int hieght, int middle)
@@ -391,7 +458,7 @@ void Interface()
 void free_drawing(int x, int y, int headinglength, int width, int hieght, int middle)
 {
     x = 0;
-    y = 15;
+    y = 24;
     getConsoleSize(&width, &hieght);
     printStarLine(width, x, y);
     y++;
@@ -417,8 +484,9 @@ void free_drawing(int x, int y, int headinglength, int width, int hieght, int mi
         }
         else if (ch == 'm')
         {
+            gotoxy(0, 0);
+            printspaces(16);
             whitecolour();
-            system("cls");
             Options();
         }
         else
@@ -445,9 +513,21 @@ void printline()
     scanf(" %c", &line[i].ch);
     gotoxy(x, y);
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
+    scanf(" %c", &line[i].col);
+    line[i].col = tolower(line[i].col);
 
     y++;
-    scanf(" %c", &line[i].col);
+    if (is_valid_size(line[i].size) || is_valid_char(line[i].ch) || is_valid_col(line[i].col))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
+
     set_pos(&line[i].x, &line[i].y);
     get_colour(line[i].col);
     strcpy(line[i].name, "Line");
@@ -487,9 +567,21 @@ void printsquare()
 
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &square[i].col);
-    get_colour(square[i].col);
+    square[i].col = tolower(square[i].col);
+
+    if (is_valid_size(square[i].size) || is_valid_char(square[i].ch) || is_valid_col(square[i].col) || is_valid_fill(square[i].fill))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
 
     set_pos(&square[i].x, &square[i].y);
+    get_colour(square[i].col);
     square[i].shape = '~';
     square[i].side = '~';
     strcpy(square[i].name, "Square");
@@ -532,7 +624,7 @@ void printtriangle()
     }
     else
     {
-        triangle[i].side = '~';
+        triangle[i].side = 'R';
     }
     gotoxy(x, y);
 
@@ -547,8 +639,20 @@ void printtriangle()
     scanf("%d", &triangle[i].fill);
     gotoxy(x, y);
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
-
     scanf(" %c", &triangle[i].col);
+    triangle[i].col = tolower(triangle[i].col);
+    triangle[i].shape = tolower(triangle[i].shape);
+    triangle[i].side = tolower(triangle[i].side);
+    if (is_valid_size(triangle[i].size) || is_valid_char(triangle[i].ch) || is_valid_col(triangle[i].col) || is_valid_fill(triangle[i].fill) || is_valid_shape(triangle[i].shape) || is_valid_side(triangle[i].side) || is_valid_type(triangle[i].type))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&triangle[i].x, &triangle[i].y);
     get_colour(triangle[i].col);
     strcpy(triangle[i].name, "Triangle");
@@ -578,6 +682,18 @@ void printtextbox()
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     y++;
     scanf(" %c", &textbox[i].col);
+    textbox[i].col = tolower(textbox[i].col);
+
+    if (is_valid_col(textbox[i].col) || is_valid_size(textbox[i].height) || is_valid_size(textbox[i].width))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&textbox[i].x, &textbox[i].y);
     get_colour(textbox[i].col);
     textbox[i].side = '~';
@@ -629,7 +745,18 @@ void printtrapezium()
 
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &trapezium[i].col);
+    trapezium[i].col = tolower(trapezium[i].col);
 
+    if (is_valid_col(trapezium[i].col) || is_valid_size(trapezium[i].height) || is_valid_size(trapezium[i].width) || is_valid_fill(trapezium[i].fill))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&trapezium[i].x, &trapezium[i].y);
     get_colour(trapezium[i].col);
     trapezium[i].size = -1;
@@ -637,8 +764,6 @@ void printtrapezium()
     trapezium[i].side = '~';
     trapezium[i].type = -1;
     strcpy(trapezium[i].name, "Trapezium");
-    trapezium[i].width = -1;
-    trapezium[i].height = -1;
     print_struct(&trapezium[i]);
     trapezium_type(trapezium[i].width, trapezium[i].height, trapezium[i].fill, trapezium[i].ch, trapezium[i].x, trapezium[i].y);
 }
@@ -664,17 +789,27 @@ void printparralelogram()
     printf("Enter any character to print: ");
     y++;
     scanf(" %c", &parralelogram[i].ch);
+    gotoxy(x, y);
 
     printf("1 to fill the shape 0 to empty: ");
     y++;
-    gotoxy(x, y);
 
     scanf("%d", &parralelogram[i].fill);
-    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     gotoxy(x, y);
-
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &parralelogram[i].col);
+    parralelogram[i].col = tolower(parralelogram[i].col);
 
+    if (is_valid_size(parralelogram[i].height) || is_valid_size(parralelogram[i].width) || is_valid_char(parralelogram[i].ch) || is_valid_col(parralelogram[i].col) || is_valid_fill(parralelogram[i].fill))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&parralelogram[i].x, &parralelogram[i].y);
 
     get_colour(parralelogram[i].col);
@@ -683,7 +818,7 @@ void printparralelogram()
     parralelogram[i].type = -1;
     strcpy(parralelogram[i].name, "Parralelogram");
     print_struct(&parralelogram[i]);
-    parallelogram_type(parralelogram[i].height, parralelogram[i].width, parralelogram[i].fill, parralelogram[i].ch, parralelogram[i].x, parralelogram[i].y);
+    parallelogram_type(parralelogram[i].width, parralelogram[i].fill, parralelogram[i].height, parralelogram[i].ch, parralelogram[i].x, parralelogram[i].y);
 }
 void printdiamond()
 {
@@ -701,17 +836,28 @@ void printdiamond()
     printf("Enter any character to print: ");
     y++;
     scanf(" %c", &diamond[i].ch);
-
-    printf("Press 1 to make complete 0 to make half diamond: ");
     gotoxy(x, y);
+    printf("Press 1 to make complete 0 to make half diamond: ");
 
     y++;
     scanf("%d", &diamond[i].fill);
-    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     gotoxy(x, y);
 
-    scanf(" %c", &diamond[i].col);
+    printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
 
+    scanf(" %c", &diamond[i].col);
+    diamond[i].col = tolower(diamond[i].col);
+
+    if (is_valid_size(diamond[i].size) || is_valid_char(diamond[i].ch) || is_valid_col(diamond[i].col) || is_valid_fill(diamond[i].fill))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&diamond[i].x, &diamond[i].y);
 
     get_colour(diamond[i].col);
@@ -752,7 +898,18 @@ void printcircle()
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
 
     scanf(" %c", &circle[i].col);
+    circle[i].col = tolower(circle[i].col);
 
+    if (is_valid_size(circle[i].size) || is_valid_char(circle[i].ch) || is_valid_col(circle[i].col) || is_valid_fill(circle[i].fill))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&circle[i].x, &circle[i].y);
 
     get_colour(circle[i].col);
@@ -786,7 +943,18 @@ void printheart()
 
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &heart[i].col);
+    heart[i].col = tolower(heart[i].col);
 
+    if (is_valid_size(heart[i].size) || is_valid_char(heart[i].ch) || is_valid_col(heart[i].col))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&heart[i].x, &heart[i].y);
     //  gotoxy(x, y);
     get_colour(heart[i].col);
@@ -807,7 +975,7 @@ void printpentagon()
     i++;
     printf("\n");
     whitecolour();
-
+    gotoxy(x,y);
     printf("Enter size: ");
     y++;
     scanf("%d", &pentagon[i].size);
@@ -816,7 +984,18 @@ void printpentagon()
     scanf(" %c", &pentagon[i].ch);
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &pentagon[i].col);
+    pentagon[i].col = tolower(pentagon[i].col);
 
+    if (is_valid_size(pentagon[i].size) || is_valid_char(pentagon[i].ch) || is_valid_col(pentagon[i].col))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&pentagon[i].x, &pentagon[i].y);
 
     get_colour(pentagon[i].col);
@@ -842,6 +1021,8 @@ void printhexagon()
     printf("Enter size: ");
     y++;
     scanf("%d", &hexagon[i].size);
+    gotoxy(x,y);
+
     printf("Enter any character to print: ");
     gotoxy(x, y);
 
@@ -853,7 +1034,18 @@ void printhexagon()
     scanf(" %c", &hexagon[i].col);
 
     set_pos(&hexagon[i].x, &hexagon[i].y);
+    hexagon[i].col = tolower(hexagon[i].col);
 
+    if (is_valid_size(hexagon[i].size) || is_valid_char(hexagon[i].ch) || is_valid_col(hexagon[i].col))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     get_colour(hexagon[i].col);
     hexagon[i].side = '~';
     hexagon[i].type = -1;
@@ -890,7 +1082,17 @@ void printstar()
 
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &star[i].col);
-
+    star[i].col = tolower(star[i].col);
+    if (is_valid_size(star[i].size) || is_valid_char(star[i].ch) || is_valid_col(star[i].col) || is_valid_type(star[i].type))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&star[i].x, &star[i].y);
     get_colour(star[i].col);
     star[i].side = '~';
@@ -926,7 +1128,17 @@ void printkite()
 
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &kite[i].col);
-
+    kite[i].col = tolower(kite[i].col);
+    if (is_valid_size(kite[i].size) || is_valid_char(kite[i].ch) || is_valid_col(kite[i].col))
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&kite[i].x, &kite[i].y);
     get_colour(kite[i].col);
     kite[i].side = '~';
@@ -960,16 +1172,34 @@ void printalphabets()
     scanf(" %c", &alpha_shapes[i].shape);
     char ch;
     gotoxy(x, y);
+    alpha_shapes[i].side = toupper(alpha_shapes[i].side);
+    alpha_shapes[i].shape = toupper(alpha_shapes[i].shape);
+
+    int flag = 0;
+    if ((isalpha(alpha_shapes[i].side) && isalpha(alpha_shapes[i].shape)) == 0)
+    {
+        flag = 1;
+    }
 
     printf("Enter the character you want to print: ");
-    gotoxy(x, y);
 
     y++;
     scanf(" %c", &alpha_shapes[i].ch);
+    gotoxy(x, y);
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
 
     scanf(" %c", &alpha_shapes[i].col);
-
+    alpha_shapes[i].col = tolower(alpha_shapes[i].col);
+    if (is_valid_char(alpha_shapes[i].ch) || is_valid_col(alpha_shapes[i].col) || flag)
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&alpha_shapes[i].x, &alpha_shapes[i].y);
     get_colour(alpha_shapes[i].col);
     alpha_shapes[i].type = -1;
@@ -1000,12 +1230,30 @@ void printnumbers()
     printf("Enter the ending number");
     y++;
     scanf("%d", &number_shapes[i].type);
-    scanf(" %c", &number_shapes[i].ch);
     gotoxy(x, y);
+    printf("Enter the character you want to print: ");
+    scanf(" %c", &number_shapes[i].ch);
+    y++;
+    gotoxy(x, y);
+    int flag = 0;
+    if ((number_shapes[i].type > 9 || number_shapes[i].fill < 0))
+    {
+        flag = 1;
+    }
 
     printf("Enter colour:y for yellow,b for blue,r for red,w for white,g for green,");
     scanf(" %c", &number_shapes[i].col);
-
+    number_shapes[i].col = tolower(number_shapes[i].col);
+    if (is_valid_char(number_shapes[i].ch) || is_valid_col(number_shapes[i].col) || flag)
+    {
+        gotoxy(x + 5, y + 5);
+        printf("Invalid input (-_-)");
+        gotoxy(x + 6, y + 6);
+        printf("Are you trying to crash me\?\?(-_-)");
+        char ch;
+        ch = getch();
+        return;
+    }
     set_pos(&number_shapes[i].x, &number_shapes[i].y);
     get_colour(number_shapes[i].col);
 

@@ -337,6 +337,7 @@ void trapezium_type(int base1, int base2, int fill, char ch, int x, int y)
 {
     if (fill == 1)
     {
+
         fill_trapezium(base1, base2, ch, x, y);
     }
     else if (fill == 0)
